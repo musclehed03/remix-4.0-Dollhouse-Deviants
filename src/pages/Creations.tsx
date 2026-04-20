@@ -16,40 +16,20 @@ export default function Creations() {
   const { isSimplifiedMode } = useAccess();
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
+    const schema = {
       "@context": "https://schema.org",
       "@type": "ImageGallery",
-      "name": "The Creations | Dollhouse Deviants Portfolio",
-      "description": "A collection of digital art, photography, and noir-industrial creative works by Sonja Kelley.",
+      "name": "The Creations | Sonja Kelley Portfolio",
       "author": {
         "@type": "Person",
         "name": "Sonja Kelley"
       },
-      "hasPart": [
-        {
-          "@type": "ImageObject",
-          "name": "Neon Cat Series - Installation 01",
-          "contentUrl": "https://dollhousedeviants.com/neon-cat-1.webp",
-          "creator": {
-            "@type": "Person",
-            "name": "Sonja Kelley"
-          },
-          "description": "Vibrant neon-infused digital art from the Neon Cat collection."
-        },
-        {
-          "@type": "ImageObject",
-          "name": "Sanctuary Collective Portrait",
-          "contentUrl": "https://dollhousedeviants.com/Group_posing_with_202604082344.webp",
-          "creator": {
-            "@type": "Person",
-            "name": "Sonja Kelley"
-          },
-          "description": "A noir-style industrial portrait featuring the Dollhouse Deviants community."
-        }
-      ]
-    });
+      "description": "Digital archives and creative works from Dollhouse Deviants 4.0."
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
     document.head.appendChild(script);
 
     return () => {
