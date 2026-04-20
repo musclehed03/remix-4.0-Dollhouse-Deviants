@@ -1,7 +1,17 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import SafeImage from '../components/SafeImage';
 import { useAccess } from '../context/AccessibilityContext';
-import { Terminal, ShoppingBag, Radio, Sparkles, BookOpen, Lock, Anchor, ArrowRight } from 'lucide-react';
+import { 
+  Terminal, 
+  ShoppingBag, 
+  Radio, 
+  Sparkles, 
+  BookOpen, 
+  Lock, 
+  Anchor, 
+  ArrowRight 
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
@@ -22,13 +32,16 @@ export default function Hub() {
     <Layout>
       <div className="max-w-5xl w-full mx-auto pb-20 px-4">
         
+        {/* Semantic H1 at top for A11Y, visually it can still be the header below */}
+        <h1 className="sr-only">Dollhouse Deviants Hub</h1>
+
         {/* Architect's Vision */}
         <section className="mb-24 pt-10 border-b border-zinc-900 pb-20">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="shrink-0 relative">
               <div className="w-48 h-48 rounded-full border border-zinc-800 p-1.5 bg-zinc-900/50">
                 <div className="w-full h-full rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
-                  <img referrerPolicy="no-referrer" src="/Sonja-Profile-Picture.jpg" alt="Sonja" className="w-full h-full object-cover" />
+                  <SafeImage src="/Sonja-Profile-Picture.webp" alt="Sonja" className="w-full h-full object-cover" loading="eager" />
                 </div>
               </div>
             </div>
@@ -50,9 +63,9 @@ export default function Hub() {
           </div>
         </section>
 
-        {/* Header moved just above branches */}
+        {/* Header moved just above branches - Changed to H2 to respect SR-Only H1 */}
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-black tracking-tighter uppercase text-white mb-2">The Hub</h1>
+          <h2 className="text-4xl font-black tracking-tighter uppercase text-white mb-2">The Hub</h2>
           <p className="text-zinc-600 font-mono text-xs tracking-[0.5em] uppercase">Choose Your Branch</p>
         </header>
 
@@ -86,7 +99,7 @@ export default function Hub() {
 
               <div className="flex flex-col items-center text-center p-8 relative z-10">
                 <branch.icon size={42} className={`${branch.color} mb-6 transition-transform duration-500 group-hover:scale-110 drop-shadow-md`} />
-                <h3 className="text-xl font-black uppercase text-white tracking-tighter mb-1">{branch.name}</h3>
+                <h2 className="text-xl font-black uppercase text-white tracking-tighter mb-1">{branch.name}</h2>
                 <p className="text-zinc-600 text-xs font-mono uppercase tracking-widest">{branch.desc}</p>
               </div>
             </Link>
@@ -96,14 +109,14 @@ export default function Hub() {
         {/* Thank You Section */}
         <section className="bg-zinc-900/30 rounded-[3rem] p-12 border border-zinc-800 flex flex-col items-center text-center relative overflow-hidden">
           <div className="max-w-md w-full mb-8 rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
-            <img 
-              referrerPolicy="no-referrer" 
-              src="/Group_posing_with_202604082344.png" 
-              alt="Gratitude" 
+            <SafeImage 
+              src="/Group_posing_with_202604082344.webp" 
+              alt="Sonja and community posing in a noir-style industrial portrait" 
               className="w-full h-auto opacity-80" 
+              loading="lazy"
             />
           </div>
-          <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">Support the Sanctuary</h3>
+          <h2 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">Support the Sanctuary</h2>
           <p className="text-zinc-500 mb-8 max-w-sm text-sm italic">"Every brick in this house is built by the community."</p>
           
           <Link to="/support" className="bg-white text-black px-10 py-4 rounded-xl font-black uppercase tracking-tighter hover:bg-cyan-400 hover:text-black border-2 border-transparent hover:border-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.8)] transition-all duration-300 flex items-center gap-3">

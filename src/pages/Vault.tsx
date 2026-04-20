@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Layout from '../components/Layout';
 import { ShieldAlert, Lock, Mail } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -43,19 +44,50 @@ export default function Vault() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
   const { user, isAdmin } = useAuth();
+  const headingRef = useRef<HTMLImageElement>(null);
+
+  // Check if they previously verified (passed the gate)
+  useEffect(() => {
+    const verified = sessionStorage.getItem('vault_verified');
+    if (verified === 'true') {
+      setIsAuthorized(true);
+    }
+  }, []);
 
   // Role derivation now uses the proper DB-backed role if available
   const currentUserRole: UserRole = user?.role || (isAdmin ? 'architect' : 'deviant');
 
-  // SCROLL TO TOP LOGIC
+  // SCROLL TO TOP LOGIC & FOCUS MANAGEMENT
   useEffect(() => {
     if (isAuthorized) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      // Move focus to the main content/heading for accessibility
+      setTimeout(() => {
+        headingRef.current?.focus();
+      }, 100);
     }
   }, [isAuthorized]);
 
   return (
     <Layout>
+      <Helmet>
+        <title>The Vault | Restricted Access | Dollhouse Deviants</title>
+        <meta name="title" content="The Vault | Restricted Access | Dollhouse Deviants" />
+        <meta name="description" content="[ARCHITECT CLEARANCE REQUIRED] Access the official restricted archives of Dollhouse Deviants. Explore uncurated galleries, exclusive 18+ content, and private creative deep-dives by Sonja Kelley. Enter the inner sanctum of the Sanctuary." />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="icon" href="/the-vault-logo-better.webp" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dollhousedeviants.com/the-vault" />
+        <meta property="og:title" content="The Vault | Inner Sanctum" />
+        <meta property="og:description" content="Entry into the restricted archives. Architectural clearance required for the inner sanctum." />
+        <meta property="og:image" content="/the-vault-logo-better.webp" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="The Vault | Restricted" />
+        <meta property="twitter:description" content="Architectural clearance required. 18+ restricted access." />
+        <meta property="twitter:image" content="/the-vault-logo-better.webp" />
+      </Helmet>
       <div className="min-h-screen bg-black flex flex-col items-center overflow-x-hidden font-sans relative">
         
         <style>{`
@@ -74,9 +106,11 @@ export default function Vault() {
         <section className="w-full flex flex-col items-center pt-10 relative">
           <div className="w-full max-w-[95vw] neon-pulse z-20">
             <img referrerPolicy="no-referrer" 
-              src="/the-vault-logo-better.jpg" 
+              src="/the-vault-logo-better.webp" 
               alt="The Vault" 
-              className="w-full h-auto object-contain"
+              ref={headingRef}
+              tabIndex={-1}
+              className="w-full h-auto object-contain outline-none"
             />
           </div>
 
@@ -97,7 +131,7 @@ export default function Vault() {
                 </div>
 
                 <img referrerPolicy="no-referrer" 
-                  src="/the-vault-logo.jpg" 
+                  src="/the-vault-logo-better.webp" 
                   alt="Live Now On Cam" 
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-[1.02]" 
                 />
@@ -124,7 +158,7 @@ export default function Vault() {
           {/* The Floor Reflection pushed safely behind everything */}
           <div className={`w-full max-w-[95vw] opacity-20 scale-y-[-1] reflection-mask blur-[2px] pointer-events-none select-none z-10 ${isAuthorized ? '-mt-48 md:-mt-72' : ''}`}>
             <img referrerPolicy="no-referrer" 
-              src="/the-vault-logo-better.jpg" 
+              src="/the-vault-logo-better.webp" 
               alt="" 
               className="w-full h-auto object-contain"
             />
@@ -195,7 +229,7 @@ export default function Vault() {
         {/* --- 3. SECONDARY BOTTOM LOGO --- */}
         <section className="w-full py-32 flex justify-center border-t border-zinc-900">
           <div className="w-full max-w-[95vw] opacity-50 grayscale hover:grayscale-0 transition-all duration-1000">
-            <img referrerPolicy="no-referrer" src="/the-vault-logo-better.jpg" alt="Dollhouse Deviants" className="w-full h-auto" />
+            <img referrerPolicy="no-referrer" src="/the-vault-logo-better.webp" alt="Dollhouse Deviants" className="w-full h-auto" />
           </div>
         </section>
 

@@ -54,6 +54,7 @@ export default function Studio() {
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
+                  aria-pressed={filter === cat}
                   className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 border ${
                     filter === cat 
                       ? 'bg-[#FF1E89] border-[#FF69B4] text-white shadow-[0_0_15px_rgba(255,30,137,0.3)] hover:shadow-[0_0_20px_rgba(255,105,180,0.6)]' 
@@ -133,7 +134,7 @@ export default function Studio() {
         {/* --- FOOTER MISSION --- */}
         <footer className="py-20 flex flex-col items-center border-t border-zinc-900 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
            <img referrerPolicy="no-referrer" 
-             src="/DD-SFW-Logo-No-Main.jpg" 
+             src="/dd-sfw-logo-no-main.webp" 
              alt="Dollhouse Deviants" 
              className="h-12 mb-4 opacity-50" 
            />

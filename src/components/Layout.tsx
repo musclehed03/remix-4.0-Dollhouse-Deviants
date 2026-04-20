@@ -30,6 +30,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen bg-[#121212] flex flex-col relative overflow-x-hidden font-sans selection:bg-magenta-500/30 selection:text-white">
+      {/* Skip to Content Link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only" 
+        style={{ position: 'absolute', top: 0, left: 0, zIndex: 9999, backgroundColor: '#FF69B4', color: 'white', padding: '1rem', fontWeight: 'bold', textTransform: 'uppercase' }}
+      >
+        Skip to main content
+      </a>
       {/* Slow Load Trigger Banner */}
       {showSlowLoadTrigger && !isSimplifiedMode && (
         <div className="fixed top-0 left-0 w-full z-[10000] bg-[#050505] border-b border-[#FF69B4]/30 p-3 flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-top-4 shadow-xl">
@@ -67,7 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
          <div className="flex items-center gap-4 sm:gap-6">
            <a href="/" className="flex items-center gap-3 text-white font-serif tracking-widest text-xl hover:text-[#FF69B4] transition-colors duration-500">
              <img referrerPolicy="no-referrer" 
-               src="/DD-SFW-Logo-No-Main.jpg" 
+               src="/dd-sfw-logo-no-main.webp" 
                alt="Dollhouse Deviants Logo" 
                className="h-10 w-auto rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
              />
@@ -78,9 +86,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
            <div className="flex items-center gap-3 pl-4 sm:pl-6 border-l border-zinc-800">
              <Tooltip content="Neurodiversity">
                <img referrerPolicy="no-referrer" 
-                 src="/neurodiversity.png" 
+                 src="/neurodiversity.webp" 
                  alt="Neurodiversity Affirming" 
-                 className="h-6 w-auto object-contain hover:scale-110 hover:shadow-[0_0_20px_rgba(255,105,180,0.3)] transition-all duration-300 rounded-full" 
+                 width="24"
+                 height="24"
+                 className="h-6 w-6 object-contain hover:scale-110 hover:shadow-[0_0_20px_rgba(255,105,180,0.3)] transition-all duration-300 rounded-full sharp-icon" 
                  onError={(e) => {
                    e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></svg>`;
                    e.currentTarget.classList.add("opacity-50");
@@ -89,9 +99,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
              </Tooltip>
              <Tooltip content="Transgender Affirming">
                <img referrerPolicy="no-referrer" 
-                 src="/transgender.png" 
+                 src="/trans-symbol.webp" 
                  alt="Transgender Affirming" 
-                 className="h-6 w-auto object-contain hover:scale-110 hover:shadow-[0_0_20px_rgba(255,105,180,0.5)] transition-all duration-300" 
+                 width="24"
+                 height="24"
+                 className="h-6 w-6 object-contain hover:scale-110 hover:shadow-[0_0_20px_rgba(255,105,180,0.5)] transition-all duration-300 sharp-icon" 
                  onError={(e) => {
                    e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23FF69B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 17v5"/><path d="M9 20h6"/><path d="m15 9 5-5"/><path d="M20 8V4h-4"/><path d="m9 9-5-5"/><path d="M4 8V4h4"/><path d="m5 5 3 3"/></svg>`;
                  }}
@@ -99,9 +111,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
              </Tooltip>
              <Tooltip content="Highly Accessible">
                <img referrerPolicy="no-referrer" 
-                 src="/a11y.png" 
+                 src="/accessibility-a11y.webp" 
                  alt="Accessibility Prioritized" 
-                 className="h-6 w-auto object-contain invert hue-rotate-180 brightness-200 hover:scale-110 drop-shadow-[0_0_5px_rgba(255,105,180,0.3)] hover:drop-shadow-[0_0_15px_rgba(255,105,180,0.8)] transition-all duration-300" 
+                 width="24"
+                 height="24"
+                 className="h-6 w-6 object-contain invert hue-rotate-180 brightness-200 hover:scale-110 drop-shadow-[0_0_5px_rgba(255,105,180,0.3)] hover:drop-shadow-[0_0_15px_rgba(255,105,180,0.8)] transition-all duration-300 sharp-icon" 
                  onError={(e) => {
                    e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M18 8c0-.5-.4-1-1-1H7c-.6 0-1 .5-1 1"/><path d="M12 2v6"/><path d="M12 15V8"/><path d="m6 20 4-5"/><path d="m18 20-4-5"/></svg>`;
                  }}
@@ -131,7 +145,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                  <Tooltip content="Manage Identity" position="bottom">
                    <div className="w-10 h-10 shrink-0 rounded-full border border-[#FF69B4]/20 overflow-hidden relative group shadow-[0_0_15px_rgba(255,105,180,0.15)] transition-all duration-700 hover:border-[#FF69B4]/50 cursor-pointer">
                      <img referrerPolicy="no-referrer" 
-                       src="/Sonja-Profile-Picture.jpg" 
+                       src="/Sonja-Profile-Picture.webp" 
                        alt="User Avatar" 
                        className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
                        onError={(e) => {
@@ -162,7 +176,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </nav>
       
       {/* Main Content Landmark */}
-      <main className="flex-grow flex flex-col items-center relative z-10 px-4 sm:px-8 pt-12 pb-32 w-full">
+      <main id="main-content" className="flex-grow flex flex-col items-center relative z-10 px-4 sm:px-8 pt-12 pb-32 w-full">
         {children}
       </main>
 

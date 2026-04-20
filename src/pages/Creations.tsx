@@ -6,10 +6,10 @@ import { Camera, Palette, ExternalLink, Info } from 'lucide-react';
 
 
 const artworks = [
-  { id: 1, title: 'Neon Deviance', category: 'Photography', img: 'https://picsum.photos/seed/neon1/800/1000?blur=2', alt: 'High contrast neon portrait' },
-  { id: 2, title: 'Digital Sanctuary', category: 'Digital Art', img: 'https://picsum.photos/seed/cyber2/800/1000?blur=2', alt: 'Abstract digital landscape' },
-  { id: 3, title: 'Transition Echoes', category: 'Photography', img: 'https://picsum.photos/seed/synth3/800/1000?blur=2', alt: 'Soft focus self-portrait' },
-  { id: 4, title: 'Cybernetic Soul', category: 'Mixed Media', img: 'https://picsum.photos/seed/sys4/800/1000?blur=2', alt: 'Glitch art composition' },
+  { id: 1, title: 'Neon Deviance I', category: 'Photography', img: '/neon-cat-1.webp', alt: 'High contrast neon portrait' },
+  { id: 2, title: 'Digital Sanctuary', category: 'Digital Art', img: '/neon-cat-2.webp', alt: 'Abstract digital landscape' },
+  { id: 3, title: 'Neon Deviance II', category: 'Photography', img: '/neon-cat-2.webp', alt: 'Soft focus neon cat composition' },
+  { id: 4, title: 'Collective Spirit', category: 'Photography', img: '/Group_posing_with_202604082344.webp', alt: 'Stylized group portrait' },
 ];
 
 export default function Creations() {

@@ -57,7 +57,7 @@ export default function Circuit() {
       role: "architect",
       isStaff: true,
       content: "Welcome to the first transmission on The Circuit. This is our space.", 
-      image: "/neon-cat-1.jpg", 
+      image: "/neon-cat-1.webp", 
       alt: "A vibrant neon cyan and pink cat in an industrial complex, symbolizing the sanctuary", 
       timestamp: "2h ago",
       hasSignature: true
@@ -71,6 +71,27 @@ export default function Circuit() {
       image: null, 
       alt: "No image provided alongside this transmission", 
       timestamp: "5h ago" 
+    },
+    { 
+      id: 4, 
+      author: "Sonja (Founder)", 
+      role: "architect",
+      isStaff: true,
+      content: "New visuals from the Studio. The neon-cat series is growing. 🐱✨", 
+      image: "/neon-cat-2.webp", 
+      alt: "A sleek neon cat rendered in vibrant purple and electric blue", 
+      timestamp: "10h ago",
+      hasSignature: true
+    },
+    { 
+      id: 5, 
+      author: "Gallery_Curator", 
+      role: "member",
+      isStaff: false,
+      content: "Found this in the archives. The energy of this collective is unmatched.", 
+      image: "/Group_posing_with_202604082344.webp", 
+      alt: "A stylized group portrait embodying the spirit of the collective", 
+      timestamp: "12h ago" 
     }
   ]);
 
@@ -109,9 +130,9 @@ export default function Circuit() {
               <Brain size={20} />
             </div>
             <div className="relative z-10">
-              <h4 className="text-white font-black uppercase tracking-widest text-xs mb-1 flex items-center gap-2">
+              <h3 className="text-white font-black uppercase tracking-widest text-xs mb-1 flex items-center gap-2">
                 Sensory Support <Heart size={10} className="text-[#FF69B4]" />
-              </h4>
+              </h3>
               <p className="text-zinc-400 text-sm">
                 This feed contains raw media. You can enable <span className="text-[#FF69B4] font-bold drop-shadow-[0_0_5px_rgba(255,105,180,0.5)]">Simplified View</span> in the corner to clear visual density.
               </p>
@@ -127,9 +148,9 @@ export default function Circuit() {
         {/* --- ADMIN QUICK LINKS --- */}
         {user?.email === "musclehed03@gmail.com" && (
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 mb-8">
-            <h3 className="text-[#FF69B4] text-xs uppercase tracking-widest font-black mb-4">
+            <h2 className="text-[#FF69B4] text-xs uppercase tracking-widest font-black mb-4">
               System Administration
-            </h3>
+            </h2>
             <div className="flex flex-wrap gap-4">
               {/* NEW COMPLIANCE QUICK LINK */}
               <a 
@@ -188,8 +209,8 @@ export default function Circuit() {
                 {/* Profile Avatar applies to all users now! */}
                 <div className="w-12 h-12 shrink-0 rounded-full bg-[#121212] border border-zinc-800 overflow-hidden relative group-hover:border-[#FF69B4]/50 transition-all duration-700 shadow-[0_0_15px_rgba(255,105,180,0.1)] z-20">
                   <img referrerPolicy="no-referrer" 
-                    src={post.author.includes('Sonja') ? "/Sonja-Profile-Picture.jpg" : `https://ui-avatars.com/api/?name=${post.author}&background=FF69B4&color=fff&bold=true`}
-                    alt="User Avatar" 
+                    src={post.author.includes('Sonja') ? "/Sonja-Profile-Picture.webp" : `https://ui-avatars.com/api/?name=${post.author}&background=FF69B4&color=fff&bold=true`}
+                    alt={`Avatar of ${post.author}`}
                     className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 transition-transform duration-500" 
                     onError={(e) => {
                       e.currentTarget.src = `https://ui-avatars.com/api/?name=${post.author}&background=FF69B4&color=fff&bold=true`;

@@ -57,7 +57,7 @@ export default function Boutique() {
                   {item.icon}
                 </div>
                 
-                <h3 className="text-2xl font-black text-white uppercase italic tracking-tight mb-4">{item.name}</h3>
+                <h2 className="text-2xl font-black text-white uppercase italic tracking-tight mb-4">{item.name}</h2>
                 <p className="text-xs text-zinc-400 leading-relaxed mb-10">{item.desc}</p>
                 
                 <div className="mt-auto pt-8 border-t border-zinc-800 flex items-center justify-between">

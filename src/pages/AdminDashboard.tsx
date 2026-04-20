@@ -109,6 +109,7 @@ function SidebarButton({ active, onClick, label }: { active: boolean; onClick: (
   return (
     <button
       onClick={onClick}
+      aria-pressed={active}
       className={`min-h-[48px] whitespace-nowrap text-left px-6 py-3 text-sm font-bold uppercase tracking-widest transition-all duration-300 border-l-4 md:w-full ${
         active 
           ? 'border-[#FF69B4] bg-[#FF69B4]/10 text-[#FF69B4] shadow-[inset_4px_0_15px_rgba(255,105,180,0.2)]' 
@@ -270,18 +271,21 @@ function WeeklyScheduleTab() {
               type="text" 
               value={item.day} 
               onChange={(e) => handleUpdateItem(item.id, 'day', e.target.value)}
+              aria-label="Schedule Day"
               className="min-h-[48px] w-full md:w-1/4 bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-[#FF69B4] font-mono text-sm focus:border-[#FF69B4] focus:outline-none"
             />
             <input 
               type="text" 
               value={item.activity} 
               onChange={(e) => handleUpdateItem(item.id, 'activity', e.target.value)}
+              aria-label="Schedule Activity"
               className="min-h-[48px] w-full md:w-1/2 bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white font-bold uppercase focus:border-[#FF69B4] focus:outline-none"
             />
             <input 
               type="text" 
               value={item.platform} 
               onChange={(e) => handleUpdateItem(item.id, 'platform', e.target.value)}
+              aria-label="Schedule Platform"
               className="min-h-[48px] w-full md:w-1/4 bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-[#A3A3A3] font-mono text-sm focus:border-[#FF69B4] focus:outline-none"
             />
           </div>
@@ -341,6 +345,7 @@ function ContentHubTab() {
             type="text" 
             value={clips4SaleRss} 
             onChange={(e) => setClips4SaleRss(e.target.value)}
+            aria-label="Clips4Sale RSS Feed URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -350,6 +355,7 @@ function ContentHubTab() {
             type="text" 
             value={pornhubNode} 
             onChange={(e) => setPornhubNode(e.target.value)}
+            aria-label="Pornhub Model Node URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -360,6 +366,7 @@ function ContentHubTab() {
             value={onlyFansUrl} 
             onChange={(e) => setOnlyFansUrl(e.target.value)}
             placeholder="https://onlyfans.com/dollhouse_deviant"
+            aria-label="OnlyFans Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -432,6 +439,7 @@ function BrandSocialsTab() {
             value={twitter} 
             onChange={(e) => setTwitter(e.target.value)}
             placeholder="https://x.com/dollhouse_deviant"
+            aria-label="Twitter Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -442,6 +450,7 @@ function BrandSocialsTab() {
             value={instagram} 
             onChange={(e) => setInstagram(e.target.value)}
             placeholder="https://instagram.com/dollhouse_deviant"
+            aria-label="Instagram Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -452,6 +461,7 @@ function BrandSocialsTab() {
             value={reddit} 
             onChange={(e) => setReddit(e.target.value)}
             placeholder="https://reddit.com/user/dollhouse_deviant"
+            aria-label="Reddit Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -462,6 +472,7 @@ function BrandSocialsTab() {
             value={bluesky} 
             onChange={(e) => setBluesky(e.target.value)}
             placeholder="https://bsky.app/profile/dollhouse_deviant"
+            aria-label="Bluesky Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -472,6 +483,7 @@ function BrandSocialsTab() {
             value={discord} 
             onChange={(e) => setDiscord(e.target.value)}
             placeholder="https://discord.gg/..."
+            aria-label="Discord Server URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -482,6 +494,7 @@ function BrandSocialsTab() {
             value={snapchat} 
             onChange={(e) => setSnapchat(e.target.value)}
             placeholder="https://snapchat.com/add/dollhouse_deviant"
+            aria-label="Snapchat Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -492,6 +505,7 @@ function BrandSocialsTab() {
             value={threads} 
             onChange={(e) => setThreads(e.target.value)}
             placeholder="https://threads.net/@dollhouse_deviant"
+            aria-label="Threads Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -502,6 +516,7 @@ function BrandSocialsTab() {
             value={tiktok} 
             onChange={(e) => setTiktok(e.target.value)}
             placeholder="https://tiktok.com/@dollhouse_deviant"
+            aria-label="TikTok Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -512,6 +527,7 @@ function BrandSocialsTab() {
             value={tumblr} 
             onChange={(e) => setTumblr(e.target.value)}
             placeholder="https://dollhouse-deviant.tumblr.com"
+            aria-label="Tumblr Profile URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
         </div>
@@ -590,6 +606,7 @@ function WebhooksTab() {
             value={discordUrl} 
             onChange={(e) => setDiscordUrl(e.target.value)}
             placeholder="https://discord.com/api/webhooks/..."
+            aria-label="Discord Webhook URL"
             className="min-h-[48px] w-full bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white focus:border-[#FF69B4] focus:outline-none font-mono shadow-inner" 
           />
           <p className="text-xs text-[#A3A3A3] font-mono mt-2">This URL will be hit with a POST request when Live Status is toggled ON.</p>
@@ -697,6 +714,7 @@ function SquircleLabTab() {
               max="40" 
               value={padding} 
               onChange={(e) => setPadding(Number(e.target.value))}
+              aria-label="Icon Padding Adjustment"
               className="w-full h-2 bg-[#0a0a0a] rounded-lg appearance-none cursor-pointer accent-[#FF69B4]"
             />
             <p className="text-xs text-[#A3A3A3] font-mono mt-3">
@@ -717,7 +735,9 @@ function SquircleLabTab() {
                 type="text" 
                 value={bgColor}
                 onChange={(e) => setBgColor(e.target.value)}
+                aria-label="Preview Website URL"
                 className="flex-1 bg-[#0a0a0a] border border-[#2D2D2D] px-4 text-white font-mono focus:border-[#FF69B4] focus:outline-none"
+                placeholder="https://..." 
               />
             </div>
           </div>
@@ -831,6 +851,7 @@ function AssetDeploymentTab() {
               type="file" 
               className="hidden" 
               accept="image/*" 
+              aria-label="URL Input"
               onChange={(e) => setFile(e.target.files?.[0] || null)} 
             />
           </label>
@@ -855,6 +876,7 @@ function AssetDeploymentTab() {
             <input 
               type="text" 
               placeholder="e.g. Waverly Shadows"
+              aria-label="URL Input"
               className="w-full bg-[#0a0a0a] border border-[#2D2D2D] rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF69B4] font-mono text-sm shadow-inner"
               value={formData.title}
               onChange={(e) => setFormData({...formData, title: e.target.value})}
@@ -867,6 +889,7 @@ function AssetDeploymentTab() {
             <input 
               type="text" 
               placeholder="e.g. Digital Noir"
+              aria-label="URL Input"
               className="w-full bg-[#0a0a0a] border border-[#2D2D2D] rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF69B4] font-mono text-sm shadow-inner"
               value={formData.category}
               onChange={(e) => setFormData({...formData, category: e.target.value})}

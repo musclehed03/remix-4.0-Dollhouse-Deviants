@@ -22,7 +22,7 @@ export default function LoadingScreen() {
         
         <div className="relative z-10 w-full max-w-[95vw] md:max-w-[75vw] mx-auto glitch-effect animate-master-glitch">
           <img referrerPolicy="no-referrer" 
-            src="/DD-SFW-Logo-No-Main.jpg" 
+            src="/dd-sfw-logo-no-main.webp" 
             alt="Dollhouse Deviants" 
             className="w-full h-auto opacity-70 contrast-150 drop-shadow-[0_0_50px_rgba(0,0,0,1)] animate-flicker relative z-10 transition-transform duration-700"
           />

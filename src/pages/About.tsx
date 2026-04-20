@@ -20,9 +20,13 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black z-10" />
-        {/* Background Image Placeholder - Suggest using a high-fashion portrait of Sonja here */}
-        <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center opacity-40">
-           <span className="text-zinc-900 text-9xl font-bold opacity-10">DEVIANT</span>
+        <div className="absolute inset-0">
+          <img 
+            referrerPolicy="no-referrer"
+            src="/Group_posing_with_202604082344.webp" 
+            alt="The Collective" 
+            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
+          />
         </div>
         
         <div className="relative z-20 text-center px-6 max-w-4xl">

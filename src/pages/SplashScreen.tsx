@@ -43,7 +43,7 @@ const SplashScreen = () => {
         {/* The New Logo */}
         <div className="w-full max-w-md md:max-w-lg relative">
           <img referrerPolicy="no-referrer"
-            src="/DD-SFW-Logo-No-Main.jpg" 
+            src="/dd-sfw-logo-no-main.webp" 
             alt="Dollhouse Deviants Neon House Logo"
             className={`w-full h-auto ${isSimplifiedMode ? '' : 'drop-shadow-[0_0_25px_rgba(255,20,147,0.4)]'}`}
           />
@@ -63,6 +63,7 @@ const SplashScreen = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
+              aria-label="URL Input"
               required
               className={`w-full bg-black/60 border border-[#FF69B4]/50 rounded-full py-3 pl-6 pr-32 text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF69B4] focus:ring-1 focus:ring-[#FF69B4] ${isSimplifiedMode ? '' : 'backdrop-blur-md'}`}
             />

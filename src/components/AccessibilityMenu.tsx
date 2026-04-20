@@ -57,6 +57,7 @@ export default function AccessibilityMenu() {
 const Toggle = ({ label, active, onClick }: { label: string, active: boolean, onClick: () => void }) => (
   <button 
     onClick={onClick}
+    aria-pressed={active}
     className={`w-full text-left p-4 rounded-lg text-xs font-bold transition-all flex justify-between items-center border ${active ? 'bg-magenta-600 text-white border-magenta-600' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 border-zinc-700'}`}
   >
     {label}

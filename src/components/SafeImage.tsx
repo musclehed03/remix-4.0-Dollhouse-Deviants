@@ -9,9 +9,10 @@ interface SafeImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   referrerPolicy?: React.HTMLAttributeReferrerPolicy;
   onError?: (e: any) => void;
   style?: React.CSSProperties;
+  loading?: 'lazy' | 'eager';
 }
 
-export default function SafeImage({ src, alt, className = '', description, ...props }: SafeImageProps) {
+export default function SafeImage({ src, alt, className = '', description, loading = 'lazy', ...props }: SafeImageProps) {
   const { isSimplifiedMode } = useAccess();
 
   // If the image is purely decorative (no alt text), we tell screen readers to ignore it
@@ -38,7 +39,7 @@ export default function SafeImage({ src, alt, className = '', description, ...pr
         src={src} 
         alt={alt} 
         className={className} 
-        loading="lazy" 
+        loading={loading} 
         aria-hidden={isDecorative} 
         {...props}
       />

@@ -172,7 +172,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/DD-SFW-Logo-No-Main.jpg');
+  background-image: url('/dd-sfw-logo-no-main.webp');
   background-size: cover;
   background-position: center;
   pointer-events: none;
@@ -253,6 +253,30 @@ body {
   animation: master-glitch 5s infinite linear;
 }
 
+/* GPU-Accelerated Animations */
+.accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Forces GPU layer creation */
+  backface-visibility: hidden;
+}
+
+/* Apply it to your moving elements like buttons or chevrons */
+.hub-link, .group, .group:hover img, .transition-all {
+  will-change: transform, opacity;
+}
+
+/* GPU-Accelerated Animations */
+.accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Forces GPU layer creation */
+  backface-visibility: hidden;
+}
+
+/* Apply it to high-interaction elements */
+.hub-branch-card, .transition-all {
+  will-change: transform, opacity;
+}
+
 /* Flicker effect */
 @keyframes flicker {
   0%, 19.99%, 22%, 62.99%, 64%, 64.99%, 70%, 100% {
@@ -310,6 +334,12 @@ body {
 .bg-magenta { background-color: #FF69B4; }
 
 /* CSS Global Overrides */
+
+/* Accessibility & Rendering Enhancements */
+.sharp-icon {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
 
 /* Screen Reader Only - Hides content visually but keeps it for JAWS/NVDA */
 .sr-only {

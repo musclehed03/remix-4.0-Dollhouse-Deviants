@@ -48,7 +48,7 @@ export default function Footer() {
         
         {/* Brand & Philanthropy */}
         <div className="space-y-6">
-          <h3 className="text-[#FF69B4] font-bold tracking-tighter text-xl italic underline decoration-zinc-800">DOLLHOUSE DEVIANTS</h3>
+          <h2 className="text-[#FF69B4] font-bold tracking-tighter text-xl italic underline decoration-zinc-800">DOLLHOUSE DEVIANTS</h2>
           <div className="text-[11px] leading-relaxed uppercase tracking-[0.2em] flex flex-col items-start gap-1">
             <span>A Sanctuary for the Unconventional.</span>
             <span className="flex items-center gap-2">Built by <span className="signature-font text-[#FF69B4] text-2xl normal-case tracking-normal transform translate-y-1 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">Sonja Kelley</span>.</span>
@@ -63,7 +63,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div>
-          <h4 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Explore</h4>
+          <h3 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Explore</h3>
           <ul className="text-xs space-y-4 uppercase tracking-widest">
             <li><Link to="/our-story" className="hover:text-[#FF69B4] transition-colors">Our Story</Link></li>
             <li><Link to="/studio" className="hover:text-[#FF69B4] transition-colors">The Studio</Link></li>
@@ -77,7 +77,7 @@ export default function Footer() {
 
         {/* Monetary Support Section */}
         <div>
-          <h4 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Contribute</h4>
+          <h3 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Contribute</h3>
           <div className="space-y-6">
             <p className="text-xs leading-relaxed">
               Help us keep the Dollhouse open for the collective. 
@@ -95,7 +95,7 @@ export default function Footer() {
 
         {/* Resources & Compliance */}
         <div>
-          <h4 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Resources</h4>
+          <h3 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Resources</h3>
           <ul className="text-xs space-y-4 uppercase tracking-widest">
             <li>
               <a href={mediaKitUrl} 
