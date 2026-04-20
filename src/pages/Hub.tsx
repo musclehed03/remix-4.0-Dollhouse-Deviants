@@ -111,7 +111,7 @@ export default function Hub() {
           <div className="max-w-md w-full mb-8 rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
             <SafeImage 
               src="/Group_posing_with_202604082344.webp" 
-              alt="Sonja and community posing in a noir-style industrial portrait" 
+              alt="Sonja Kelley and the Dollhouse Deviants community in a noir-style industrial portrait" 
               className="w-full h-auto opacity-80" 
               loading="lazy"
             />

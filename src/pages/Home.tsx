@@ -107,7 +107,7 @@ const Home = () => {
             <div className="aspect-[21/9] overflow-hidden relative">
               <SafeImage 
                 src="/Group_posing_with_202604082344.webp" 
-                alt="Thank You to Our Community" 
+                alt="Sonja Kelley and the Dollhouse Deviants community in a noir-style industrial portrait" 
                 className="w-full h-full object-cover object-center grayscale-[80%] group-hover:grayscale-[20%] group-hover:scale-105 transition-all duration-1000 origin-center"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=1200&q=80";

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 import { useAccess } from '../context/AccessibilityContext';
 import { Camera, Palette, ExternalLink, Info } from 'lucide-react';
@@ -6,14 +6,58 @@ import { Camera, Palette, ExternalLink, Info } from 'lucide-react';
 
 
 const artworks = [
-  { id: 1, title: 'Neon Deviance I', category: 'Photography', img: '/neon-cat-1.webp', alt: 'High contrast neon portrait' },
-  { id: 2, title: 'Digital Sanctuary', category: 'Digital Art', img: '/neon-cat-2.webp', alt: 'Abstract digital landscape' },
-  { id: 3, title: 'Neon Deviance II', category: 'Photography', img: '/neon-cat-2.webp', alt: 'Soft focus neon cat composition' },
-  { id: 4, title: 'Collective Spirit', category: 'Photography', img: '/Group_posing_with_202604082344.webp', alt: 'Stylized group portrait' },
+  { id: 1, title: 'Neon Deviance I', category: 'Photography', img: '/neon-cat-1.webp', alt: 'Sonja Kelley Neon Deviance I - A high contrast magenta and cyan noir-style portrait' },
+  { id: 2, title: 'Digital Sanctuary', category: 'Digital Art', img: '/neon-cat-2.webp', alt: 'Sonja Kelley Digital Sanctuary - An abstract digital landscape with industrial neon accents' },
+  { id: 3, title: 'Neon Deviance II', category: 'Photography', img: '/neon-cat-2.webp', alt: 'Sonja Kelley Neon Deviance II - A soft focus neon cat-themed composition in a digital sanctuary' },
+  { id: 4, title: 'Collective Spirit', category: 'Photography', img: '/Group_posing_with_202604082344.webp', alt: 'Sonja Kelley and the Dollhouse Deviants community in a noir-style industrial portrait' },
 ];
 
 export default function Creations() {
   const { isSimplifiedMode } = useAccess();
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "The Creations | Dollhouse Deviants Portfolio",
+      "description": "A collection of digital art, photography, and noir-industrial creative works by Sonja Kelley.",
+      "author": {
+        "@type": "Person",
+        "name": "Sonja Kelley"
+      },
+      "hasPart": [
+        {
+          "@type": "ImageObject",
+          "name": "Neon Cat Series - Installation 01",
+          "contentUrl": "https://dollhousedeviants.com/neon-cat-1.webp",
+          "creator": {
+            "@type": "Person",
+            "name": "Sonja Kelley"
+          },
+          "description": "Vibrant neon-infused digital art from the Neon Cat collection."
+        },
+        {
+          "@type": "ImageObject",
+          "name": "Sanctuary Collective Portrait",
+          "contentUrl": "https://dollhousedeviants.com/Group_posing_with_202604082344.webp",
+          "creator": {
+            "@type": "Person",
+            "name": "Sonja Kelley"
+          },
+          "description": "A noir-style industrial portrait featuring the Dollhouse Deviants community."
+        }
+      ]
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <Layout>
