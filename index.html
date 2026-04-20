@@ -44,23 +44,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="/dd-sfw-logo-no-main.webp" fetchpriority="high">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-      :root {
-        --dd-black: #050505;
-        --dd-gray: #121212;
+      /* Ensure background is black and logo area is ready before CSS loads */
+      body { 
+        background-color: #000; 
+        margin: 0; 
+        padding: 0; 
+        overflow-x: hidden; 
+        color: #fff;
       }
-      body {
-        background-color: var(--dd-black);
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
+      #root { 
+        min-height: 100vh; 
+        display: flex; 
+        flex-direction: column; 
+        background-color: #000;
+        background-image: radial-gradient(circle at center, #121212 0%, #000 100%);
       }
-      #root {
-        background-color: var(--dd-black);
-        background-image: radial-gradient(circle at center, var(--dd-gray) 0%, var(--dd-black) 100%);
-        min-height: 100vh;
+      .loading-screen { 
+        background: #000; 
+        height: 100vh; 
+        width: 100vw; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
       }
     </style>
 

@@ -11,6 +11,16 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
+    build: {
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true, // Removes console.logs to save space
+          dead_code: true,
+        },
+        mangle: true, // Shortens variable names aggressively
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

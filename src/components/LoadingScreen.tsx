@@ -28,6 +28,7 @@ export default function LoadingScreen() {
             height="150"
             fetchPriority="high"
             loading="eager"
+            decoding="async"
             className="w-full h-auto opacity-70 contrast-150 drop-shadow-[0_0_50px_rgba(0,0,0,1)] animate-flicker relative z-10 transition-transform duration-700"
           />
 
