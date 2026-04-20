@@ -1,63 +1,87 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
-
-
+import Layout from '../components/Layout';
+import { Shield, Fingerprint, Lock, ShieldCheck } from 'lucide-react';
 
 export default function Privacy() {
   return (
-    <div className="min-h-screen bg-black text-zinc-400 p-8 md:p-24 selection:bg-[#FF69B4]/30 flex flex-col">
-      {/* Navigation */}
-      <nav className="mb-16">
-        <Link to="/" className="text-[#FF69B4] font-bold uppercase tracking-widest text-xs hover:text-white transition-colors">
-          ← Return to Hub
-        </Link>
-      </nav>
+    <Layout>
+      <div className="w-full max-w-4xl mx-auto space-y-12">
+        <header className="mb-20 border-b border-zinc-900 pb-10">
+          <div className="flex items-center gap-3 mb-6">
+            <Shield className="text-[#FF69B4]" size={32} />
+            <span className="text-xs uppercase tracking-[0.4em] font-bold text-zinc-600">
+              Privacy & Data Protocol
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter italic">
+            Zero <span className="text-[#FF69B4] drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">Trust</span> Architecture
+          </h1>
+          <p className="mt-4 text-zinc-500 italic max-w-2xl">
+            Dollhouse Deviants is a Sanctuary. Our data retention, encryption, and privacy models reflect this core philosophy.
+          </p>
+        </header>
 
-      <div className="max-w-3xl mx-auto border border-zinc-900 p-8 md:p-16 bg-zinc-950/50 flex-grow mb-16">
-        <h1 className="text-white text-3xl font-bold italic tracking-tighter mb-8 border-b border-[#FF69B4]/50 pb-4">
-          PRIVACY & CONSENT POLICY
-        </h1>
-
-        <div className="space-y-8 text-sm leading-relaxed tracking-wide">
-          <section>
-            <p className="text-white font-bold mb-4 uppercase tracking-widest text-xs">1. Age & Explicit Consent</p>
-            <p>
-              Dollhouse Deviants is strictly for adults 18 years of age and older. By accessing this site, you explicitly consent to viewing adult-oriented material. We do not knowingly collect information from anyone under the age of 18.
+        <div className="space-y-16 text-sm leading-relaxed tracking-wide text-zinc-400">
+          <section className="bg-zinc-900/10 border border-zinc-800 p-8 rounded-2xl relative overflow-hidden group hover:border-[#FF69B4]/50 transition-colors">
+            <div className="flex items-center gap-4 mb-6">
+              <ShieldCheck className="text-[#FF69B4]" size={24} />
+              <h2 className="text-white font-black uppercase tracking-widest text-lg">1. The Sanctuary Promise</h2>
+            </div>
+            <p className="mb-4">
+              We respect your right to exist without surveillance. We operate on a "Zero Trust" security model across all our endpoints. 
+              We collect <strong>only the minimal data absolutely necessary</strong> for site functionality, account authentication, and legal 18+ verification.
+            </p>
+            <p className="text">
+              We do not sell, rent, broker, or otherwise distribute your personal data, identity markers, or browsing habits to third-party marketers or aggregators. Period.
             </p>
           </section>
 
-          <section>
-            <p className="text-white font-bold mb-4 uppercase tracking-widest text-xs">2. Data Collection & Usage</p>
-            <p>
-              We respect your privacy and operate on a "Zero Trust" security model. We collect only the minimal data necessary for site functionality, account authentication, and secure payment processing. We do not sell, rent, or distribute your personal data to third-party marketers.
+          <section className="bg-zinc-900/10 border border-zinc-800 p-8 rounded-2xl relative overflow-hidden group hover:border-[#FF69B4]/50 transition-colors">
+            <div className="flex items-center gap-4 mb-6">
+              <Lock className="text-[#FF69B4]" size={24} />
+              <h2 className="text-white font-black uppercase tracking-widest text-lg">2. The Vault: Content & Payments</h2>
+            </div>
+            <p className="mb-4">
+              Accessing explicit, paywalled content within <strong>The Vault</strong> requires specialized legal protocols. 
+              High-risk transactions are processed directly through certified, 18+ compliant payment gateways (CCBill/Segpay).
+            </p>
+            <ul className="list-disc pl-6 space-y-3 mb-4 text-zinc-500">
+              <li><strong className="text-zinc-300">No Raw Data:</strong> We do not store full credit card numbers or raw financial metadata on Dollhouse databases.</li>
+              <li><strong className="text-zinc-300">HMAC-SHA256:</strong> All incoming payment verifications and webhooks utilize HMAC-SHA256 encrypted cryptographic signatures to ensure zero spoofing.</li>
+              <li><strong className="text-zinc-300">Atomic Access:</strong> Your authentication grants access via verified tokens that cannot be intercepted by third-party scripts.</li>
+            </ul>
+          </section>
+
+          <section className="bg-zinc-900/10 border border-zinc-800 p-8 rounded-2xl relative overflow-hidden group hover:border-[#FF69B4]/50 transition-colors">
+            <div className="flex items-center gap-4 mb-6">
+              <Fingerprint className="text-[#FF69B4]" size={24} />
+              <h2 className="text-white font-black uppercase tracking-widest text-lg">3. The Echoes: Contributions & Interactions</h2>
+            </div>
+            <p className="mb-4">
+              When engaging in <strong>The Echoes</strong> (such as posting journals, leaving comments, or interacting with the community), your interactions are secured. 
+            </p>
+            <p className="mb-4">
+              You maintain total emotional and intellectual ownership over what you post. However, any content shared publicly in The Echoes is visible to the verified community. We do not use user posts to train external generative AI networks. If you choose to delete your account, your relational database entries are systematically wiped, though anonymized server logs may persist for legal compliance bounds.
             </p>
           </section>
 
-          <section>
-            <p className="text-white font-bold mb-4 uppercase tracking-widest text-xs">3. Payment Processing</p>
+          <section className="bg-zinc-900/10 border border-zinc-800 p-8 rounded-2xl">
+            <h2 className="text-white font-black uppercase tracking-widest text-xs mb-4 text-zinc-500">4. Cookies & System Tracking</h2>
             <p>
-              High-risk transactions are processed securely through our compliant payment gateways (CCBill/Segpay). We do not store your full credit card numbers or raw financial data on our servers. All webhooks and payment verifications utilize HMAC-SHA256 encryption.
-            </p>
-          </section>
-
-          <section>
-            <p className="text-white font-bold mb-4 uppercase tracking-widest text-xs">4. Cookies & Tracking</p>
-            <p>
-              We use essential cookies to maintain your session and preferences (such as your Deviant Controls/Accessibility settings). We do not use invasive third-party tracking pixels.
+              We use strictly essential session tokens to manage your login state and accessibility preferences (such as your Deviant Controls configuration). We explicitly block invasive cross-site tracking pixels that weaponize your browsing habits.
             </p>
           </section>
 
           <section className="pt-8 border-t border-zinc-900">
-            <p className="text-xs uppercase tracking-[0.2em] text-zinc-600">
-              Last Updated: April 2026<br/>
-              Inquiries: privacy@dollhousedeviants.com
+            <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-600 mb-2">
+              System Document: DD-PRIVACY-01
+            </p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#FF69B4]">
+              Direct Inquiries: privacy@dollhousedeviants.com
             </p>
           </section>
         </div>
       </div>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }

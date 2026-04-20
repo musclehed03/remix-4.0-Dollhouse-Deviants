@@ -18,7 +18,7 @@ interface RoleGuardProps {
   fallback?: React.ReactNode;
 }
 
-export const RoleGuard = ({ userRole, requiredRole, children, fallback }: RoleGuardProps) => {
+export const RoleGuard: React.FC<RoleGuardProps> = ({ userRole, requiredRole, children, fallback }) => {
   const roles = ['deviant', 'architect', 'admin'];
   const userLevel = roles.indexOf(userRole);
   const requiredLevel = roles.indexOf(requiredRole);

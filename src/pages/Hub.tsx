@@ -28,7 +28,7 @@ export default function Hub() {
             <div className="shrink-0 relative">
               <div className="w-48 h-48 rounded-full border border-zinc-800 p-1.5 bg-zinc-900/50">
                 <div className="w-full h-full rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
-                  <img referrerPolicy="no-referrer" src="/avatars/Sonja-At-the-Boutique.jpg" alt="Sonja" className="w-full h-full object-cover" />
+                  <img referrerPolicy="no-referrer" src="/Sonja-Profile-Picture.jpg" alt="Sonja" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -96,7 +96,12 @@ export default function Hub() {
         {/* Thank You Section */}
         <section className="bg-zinc-900/30 rounded-[3rem] p-12 border border-zinc-800 flex flex-col items-center text-center relative overflow-hidden">
           <div className="max-w-md w-full mb-8 rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
-            <img referrerPolicy="no-referrer" src="/gallery/misc/thank-you.png" alt="Gratitude" className="w-full h-auto opacity-80" />
+            <img 
+              referrerPolicy="no-referrer" 
+              src="/Group_posing_with_202604082344.png" 
+              alt="Gratitude" 
+              className="w-full h-auto opacity-80" 
+            />
           </div>
           <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">Support the Sanctuary</h3>
           <p className="text-zinc-500 mb-8 max-w-sm text-sm italic">"Every brick in this house is built by the community."</p>

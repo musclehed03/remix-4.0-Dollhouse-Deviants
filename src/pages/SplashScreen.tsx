@@ -43,7 +43,7 @@ const SplashScreen = () => {
         {/* The New Logo */}
         <div className="w-full max-w-md md:max-w-lg relative">
           <img referrerPolicy="no-referrer"
-            src="/branding/dd-sfw-logo.jpg?v=1" 
+            src="/DD-SFW-Logo-No-Main.jpg" 
             alt="Dollhouse Deviants Neon House Logo"
             className={`w-full h-auto ${isSimplifiedMode ? '' : 'drop-shadow-[0_0_25px_rgba(255,20,147,0.4)]'}`}
           />

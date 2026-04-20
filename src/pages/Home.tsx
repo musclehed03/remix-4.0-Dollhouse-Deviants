@@ -106,7 +106,7 @@ const Home = () => {
             
             <div className="aspect-[21/9] overflow-hidden relative">
               <SafeImage 
-                src="/gallery/misc/thank-you.png" 
+                src="/Gemini_Generated_Image_urdwjvurdwjvurdw.png" 
                 alt="Thank You to Our Community" 
                 className="w-full h-full object-cover object-center grayscale-[80%] group-hover:grayscale-[20%] group-hover:scale-105 transition-all duration-1000 origin-center"
                 onError={(e) => {

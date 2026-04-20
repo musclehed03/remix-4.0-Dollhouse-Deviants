@@ -172,7 +172,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/branding/dd-sfw-logo.jpg?v=1');
+  background-image: url('/DD-SFW-Logo-No-Main.jpg');
   background-size: cover;
   background-position: center;
   pointer-events: none;
@@ -630,4 +630,26 @@ body.light-mode.high-contrast {
 .high-contrast.color-blind-mode .text-magenta-500,
 .high-contrast.color-blind-mode .text-magenta-600 {
   color: #00E5FF !important;
+}
+
+/* =========================================
+   GLOBAL ACCESSIBILITY ENHANCEMENTS
+   ========================================= */
+
+/* Ensure keyboard focus states are highly visible site-wide */
+*:focus-visible {
+  outline: 2px solid #FF69B4 !important;
+  outline-offset: 4px !important;
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(255,105,180,0.5) !important;
+}
+
+.high-contrast *:focus-visible {
+  outline: 3px solid #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+.color-blind-mode *:focus-visible {
+  outline-color: #00E5FF !important;
+  box-shadow: 0 0 15px rgba(0,229,255,0.5) !important;
 }

@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { Zap } from 'lucide-react';
 import { Nameplate } from './Nameplate';
 import { AccessibilityToggle } from './AccessibilityToggle';
+import { Tooltip } from './Tooltip';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { isSimplifiedMode, toggleSimplifiedMode } = useAccess();
@@ -62,15 +63,52 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,105,180,0.03)_0%,_rgba(18,18,18,0)_70%)] pointer-events-none"></div>
 
       {/* Navigation Landmark - Pushed to top left */}
-      <nav className="z-20 w-full px-4 sm:px-6 py-6 flex justify-between items-center" aria-label="Main Navigation">
-         <a href="/" className="flex items-center gap-3 text-white font-serif tracking-widest text-xl hover:text-[#FF69B4] transition-colors duration-500">
-           <img referrerPolicy="no-referrer" 
-             src="/branding/dd-sfw-logo.jpg?v=1" 
-             alt="Dollhouse Deviants Logo" 
-             className="h-10 w-auto rounded-sm object-contain" 
-           />
-           <span className="uppercase font-light hidden sm:inline-block">Dollhouse Deviants</span>
-         </a>
+      <nav className="z-20 w-full px-4 sm:px-6 py-6 flex flex-wrap justify-between items-center gap-y-4" aria-label="Main Navigation">
+         <div className="flex items-center gap-4 sm:gap-6">
+           <a href="/" className="flex items-center gap-3 text-white font-serif tracking-widest text-xl hover:text-[#FF69B4] transition-colors duration-500">
+             <img referrerPolicy="no-referrer" 
+               src="/DD-SFW-Logo-No-Main.jpg" 
+               alt="Dollhouse Deviants Logo" 
+               className="h-10 w-auto rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
+             />
+             <span className="uppercase font-light hidden md:inline-block">Dollhouse Deviants</span>
+           </a>
+           
+           {/* Site-wide Core Values Symbols */}
+           <div className="flex items-center gap-3 pl-4 sm:pl-6 border-l border-zinc-800">
+             <Tooltip content="Neurodiversity">
+               <img referrerPolicy="no-referrer" 
+                 src="/neurodiversity.png" 
+                 alt="Neurodiversity Affirming" 
+                 className="h-6 w-auto object-contain hover:scale-110 hover:shadow-[0_0_20px_rgba(255,105,180,0.3)] transition-all duration-300 rounded-full" 
+                 onError={(e) => {
+                   e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></svg>`;
+                   e.currentTarget.classList.add("opacity-50");
+                 }}
+               />
+             </Tooltip>
+             <Tooltip content="Transgender Affirming">
+               <img referrerPolicy="no-referrer" 
+                 src="/transgender.png" 
+                 alt="Transgender Affirming" 
+                 className="h-6 w-auto object-contain hover:scale-110 hover:shadow-[0_0_20px_rgba(255,105,180,0.5)] transition-all duration-300" 
+                 onError={(e) => {
+                   e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23FF69B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 17v5"/><path d="M9 20h6"/><path d="m15 9 5-5"/><path d="M20 8V4h-4"/><path d="m9 9-5-5"/><path d="M4 8V4h4"/><path d="m5 5 3 3"/></svg>`;
+                 }}
+               />
+             </Tooltip>
+             <Tooltip content="Highly Accessible">
+               <img referrerPolicy="no-referrer" 
+                 src="/a11y.png" 
+                 alt="Accessibility Prioritized" 
+                 className="h-6 w-auto object-contain invert hue-rotate-180 brightness-200 hover:scale-110 drop-shadow-[0_0_5px_rgba(255,105,180,0.3)] hover:drop-shadow-[0_0_15px_rgba(255,105,180,0.8)] transition-all duration-300" 
+                 onError={(e) => {
+                   e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M18 8c0-.5-.4-1-1-1H7c-.6 0-1 .5-1 1"/><path d="M12 2v6"/><path d="M12 15V8"/><path d="m6 20 4-5"/><path d="m18 20-4-5"/></svg>`;
+                 }}
+               />
+             </Tooltip>
+           </div>
+         </div>
          
          <div className="flex items-center gap-4 sm:gap-6">
            <AccessibilityToggle />
@@ -90,20 +128,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                    </p>
                  </div>
                  
-                 <div className="w-10 h-10 shrink-0 rounded-full border border-[#FF69B4]/20 overflow-hidden relative group shadow-[0_0_15px_rgba(255,105,180,0.15)] transition-all duration-700 hover:border-[#FF69B4]/50">
-                   <img referrerPolicy="no-referrer" 
-                     src="/avatars/sonja-profile.jpg?v=1" 
-                     alt="User Avatar" 
-                     className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
-                     onError={(e) => {
-                       e.currentTarget.src = `https://ui-avatars.com/api/?name=${currentUser.displayName || 'User'}&background=FF69B4&color=fff&bold=true`;
-                     }}
-                   />
-                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FF69B4]/20 to-transparent h-1 w-full animate-scan-slow pointer-events-none" />
-                 </div>
+                 <Tooltip content="Manage Identity" position="bottom">
+                   <div className="w-10 h-10 shrink-0 rounded-full border border-[#FF69B4]/20 overflow-hidden relative group shadow-[0_0_15px_rgba(255,105,180,0.15)] transition-all duration-700 hover:border-[#FF69B4]/50 cursor-pointer">
+                     <img referrerPolicy="no-referrer" 
+                       src="/Sonja-Profile-Picture.jpg" 
+                       alt="User Avatar" 
+                       className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-1000"
+                       onError={(e) => {
+                         e.currentTarget.src = `https://ui-avatars.com/api/?name=${currentUser.displayName || 'User'}&background=FF69B4&color=fff&bold=true`;
+                       }}
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FF69B4]/20 to-transparent h-1 w-full animate-scan-slow pointer-events-none" />
+                   </div>
+                 </Tooltip>
                </>
              ) : (
-               <div className="flex items-center gap-3 group cursor-pointer" onClick={loginWithGoogle}>
+               <Tooltip content="System Login" position="bottom">
+                  <button className="flex items-center gap-3 group cursor-pointer w-full text-left" aria-label="Log into system" onClick={loginWithGoogle}>
                  <div className="text-right hidden md:block">
                    <p className="text-xs tracking-widest text-zinc-400 font-bold uppercase group-hover:text-[#FF69B4] transition-colors">Log In</p>
                    <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mt-1">
@@ -113,7 +154,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                  <div className="w-10 h-10 shrink-0 rounded-full border border-zinc-800 border-dashed flex items-center justify-center text-zinc-600 group-hover:border-[#FF69B4] group-hover:text-[#FF69B4] transition-all bg-zinc-900/50">
                     <span className="text-xs tracking-widest font-black uppercase">?</span>
                  </div>
-               </div>
+                </button>
+              </Tooltip>
              )}
            </div>
          </div>

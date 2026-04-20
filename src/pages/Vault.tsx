@@ -74,7 +74,7 @@ export default function Vault() {
         <section className="w-full flex flex-col items-center pt-10 relative">
           <div className="w-full max-w-[95vw] neon-pulse z-20">
             <img referrerPolicy="no-referrer" 
-              src="/branding/the-vault-logo-better.jpg" 
+              src="/the-vault-logo-better.jpg" 
               alt="The Vault" 
               className="w-full h-auto object-contain"
             />
@@ -97,7 +97,7 @@ export default function Vault() {
                 </div>
 
                 <img referrerPolicy="no-referrer" 
-                  src="/vault-entrance.jpg" 
+                  src="/the-vault-logo.jpg" 
                   alt="Live Now On Cam" 
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-[1.02]" 
                 />
@@ -124,7 +124,7 @@ export default function Vault() {
           {/* The Floor Reflection pushed safely behind everything */}
           <div className={`w-full max-w-[95vw] opacity-20 scale-y-[-1] reflection-mask blur-[2px] pointer-events-none select-none z-10 ${isAuthorized ? '-mt-48 md:-mt-72' : ''}`}>
             <img referrerPolicy="no-referrer" 
-              src="/branding/the-vault-logo-better.jpg" 
+              src="/the-vault-logo-better.jpg" 
               alt="" 
               className="w-full h-auto object-contain"
             />
@@ -195,7 +195,7 @@ export default function Vault() {
         {/* --- 3. SECONDARY BOTTOM LOGO --- */}
         <section className="w-full py-32 flex justify-center border-t border-zinc-900">
           <div className="w-full max-w-[95vw] opacity-50 grayscale hover:grayscale-0 transition-all duration-1000">
-            <img referrerPolicy="no-referrer" src="/branding/the-vault-logo-better.jpg" alt="Dollhouse Deviants" className="w-full h-auto" />
+            <img referrerPolicy="no-referrer" src="/the-vault-logo-better.jpg" alt="Dollhouse Deviants" className="w-full h-auto" />
           </div>
         </section>
 

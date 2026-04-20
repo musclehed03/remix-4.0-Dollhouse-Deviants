@@ -24,7 +24,7 @@ export default function Circuit() {
       tags: ["Manifesto", "SanctuaryProtocol", "ArchitectLog"],
       isPinned: true,
       image: null,
-      alt: "",
+      alt: "No image provided alongside this transmission",
       hasSignature: true
     },
     {
@@ -37,7 +37,7 @@ export default function Circuit() {
       tags: ["BoutiqueAccess", "AssetDeployment", "ArchitectResources"],
       isPinned: false,
       image: null,
-      alt: "",
+      alt: "No image provided alongside this transmission",
       hasSignature: true
     },
     { 
@@ -47,7 +47,7 @@ export default function Circuit() {
       isStaff: true,
       content: "Architect Log // Update 01: The sanctuary just got a little clearer. We've officially transitioned 'Lite Mode' to 'Simplified View' to better support our screen-reader family. I've also wired in a Sensory Advisory for The Circuit—safety first, always. 🏳️⚧️✨", 
       image: null, 
-      alt: "", 
+      alt: "No image provided alongside this transmission", 
       timestamp: "Just now",
       hasSignature: true
     },
@@ -57,8 +57,8 @@ export default function Circuit() {
       role: "architect",
       isStaff: true,
       content: "Welcome to the first transmission on The Circuit. This is our space.", 
-      image: "/gallery/neon-cats/neon-cat-1.jpg", 
-      alt: "A vibrant neon cat in an industrial complex.", 
+      image: "/neon-cat-1.jpg", 
+      alt: "A vibrant neon cyan and pink cat in an industrial complex, symbolizing the sanctuary", 
       timestamp: "2h ago",
       hasSignature: true
     },
@@ -69,7 +69,7 @@ export default function Circuit() {
       isStaff: false,
       content: "Feeling safe here. Thank you for building this, Founder.", 
       image: null, 
-      alt: "", 
+      alt: "No image provided alongside this transmission", 
       timestamp: "5h ago" 
     }
   ]);
@@ -188,7 +188,7 @@ export default function Circuit() {
                 {/* Profile Avatar applies to all users now! */}
                 <div className="w-12 h-12 shrink-0 rounded-full bg-[#121212] border border-zinc-800 overflow-hidden relative group-hover:border-[#FF69B4]/50 transition-all duration-700 shadow-[0_0_15px_rgba(255,105,180,0.1)] z-20">
                   <img referrerPolicy="no-referrer" 
-                    src={post.author.includes('Sonja') ? "/avatars/sonja-profile.jpg?v=1" : `https://ui-avatars.com/api/?name=${post.author}&background=FF69B4&color=fff&bold=true`}
+                    src={post.author.includes('Sonja') ? "/Sonja-Profile-Picture.jpg" : `https://ui-avatars.com/api/?name=${post.author}&background=FF69B4&color=fff&bold=true`}
                     alt="User Avatar" 
                     className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 transition-transform duration-500" 
                     onError={(e) => {

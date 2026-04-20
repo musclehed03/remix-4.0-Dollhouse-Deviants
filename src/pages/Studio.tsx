@@ -133,7 +133,7 @@ export default function Studio() {
         {/* --- FOOTER MISSION --- */}
         <footer className="py-20 flex flex-col items-center border-t border-zinc-900 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
            <img referrerPolicy="no-referrer" 
-             src="/branding/dd-sfw-logo.jpg?v=1" 
+             src="/DD-SFW-Logo-No-Main.jpg" 
              alt="Dollhouse Deviants" 
              className="h-12 mb-4 opacity-50" 
            />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ShieldAlert, Crown, ArrowRight, X } from 'lucide-react';
 
 interface UpgradeModalProps {
@@ -7,26 +7,57 @@ interface UpgradeModalProps {
 }
 
 export const UpgradeModal = ({ isOpen, onClose }: UpgradeModalProps) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      // Focus management: focus the modal wrapper to trap keyboard navigation
+      modalRef.current?.focus();
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={onClose} aria-hidden="true" />
       
       {/* Modal Content */}
-      <div className="relative w-full max-w-lg bg-zinc-900 border border-[#FF69B4]/30 rounded-[3rem] p-12 shadow-[0_0_50px_rgba(255,105,180,0.2)] text-center animate-in fade-in zoom-in duration-300">
-        <button onClick={onClose} className="absolute top-8 right-8 text-zinc-600 hover:text-white transition-colors">
-          <X size={24} />
+      <div 
+        ref={modalRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="upgrade-modal-title"
+        className="relative w-full max-w-lg bg-zinc-900 border border-[#FF69B4]/30 rounded-[3rem] p-12 shadow-[0_0_50px_rgba(255,105,180,0.2)] text-center animate-in fade-in zoom-in duration-300 outline-none"
+      >
+        <button 
+          onClick={onClose} 
+          className="absolute top-8 right-8 text-zinc-600 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF69B4] rounded-md"
+          aria-label="Close modal"
+        >
+          <X size={24} aria-hidden="true" />
         </button>
 
         <div className="flex justify-center mb-8">
           <div className="p-4 bg-[#FF1E89]/10 rounded-2xl border border-[#FF69B4]/20 animate-pulse">
-            <ShieldAlert className="text-[#FF69B4]" size={48} />
+            <ShieldAlert className="text-[#FF69B4]" size={48} aria-hidden="true" />
           </div>
         </div>
 
-        <h2 className="text-3xl font-black text-white uppercase tracking-tighter italic mb-4">
+        <h2 id="upgrade-modal-title" className="text-3xl font-black text-white uppercase tracking-tighter italic mb-4">
           Clearance <span className="text-[#FF69B4] drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">Denied</span>
         </h2>
         
