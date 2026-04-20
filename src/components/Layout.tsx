@@ -80,7 +80,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                width="40"
                height="40"
                fetchPriority="high"
-               className="h-10 w-40 rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
+               loading="eager"
+               className="h-10 w-auto rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
              />
              <span className="uppercase font-light hidden md:inline-block">Dollhouse Deviants</span>
            </a>
@@ -140,7 +141,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                      role={(currentUser as any).role || 'architect'} 
                      className="text-xs justify-end"
                    />
-                   <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mt-1">
+                   <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400 mt-1">
                      System Status: Online
                    </p>
                  </div>
@@ -164,7 +165,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <button className="flex items-center gap-3 group cursor-pointer w-full text-left" aria-label="Log into system" onClick={loginWithGoogle}>
                  <div className="text-right hidden md:block">
                    <p className="text-xs tracking-widest text-zinc-400 font-bold uppercase group-hover:text-[#FF69B4] transition-colors">Log In</p>
-                   <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mt-1">
+                   <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400 mt-1">
                      System Status: Offline
                    </p>
                  </div>

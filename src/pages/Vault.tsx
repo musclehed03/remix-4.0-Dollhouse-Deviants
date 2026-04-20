@@ -1,53 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Layout from '../components/Layout';
-import { ShieldAlert, Lock, Mail } from 'lucide-react';
+import ShieldAlert from 'lucide-react/dist/esm/icons/shield-alert';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import Mail from 'lucide-react/dist/esm/icons/mail';
 import { useAuth } from '../context/AuthContext';
 import { RoleGuard, ArchitectBadge, UserRole } from '../components/RoleGuard';
 import { UpgradeModal } from '../components/UpgradeModal';
 
-
-
-// 1. DATA FOR YOUR CONTENT (Prices are info-only now)
-const vaultItems = [
-  { 
-    id: 1, 
-    title: "Deviant Digital Set 01", 
-    price: "15.00", 
-    desc: "Exclusive high-res gallery collection.",
-    requiredRole: 'deviant' as UserRole
-  },
-  { 
-    id: 2, 
-    title: "Sonja (Founder)'s Private Log", 
-    price: "0.00", 
-    desc: "Behind the scenes of the sanctuary build.",
-    requiredRole: 'architect' as UserRole
-  },
-  { 
-    id: 3, 
-    title: "Uncut Boutique Session", 
-    price: "25.00", 
-    desc: "Full-length 4K video archive.",
-    requiredRole: 'deviant' as UserRole
-  },
-  { 
-    id: 4, 
-    title: "Midnight Preset Pack", 
-    price: "12.00", 
-    desc: "Custom lighting filters for deviants.",
-    requiredRole: 'deviant' as UserRole
-  },
-];
+interface VaultItem {
+  id: number;
+  title: string;
+  price: string;
+  desc: string;
+  requiredRole: UserRole;
+}
 
 export default function Vault() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+  const [vaultItems, setVaultItems] = useState<VaultItem[]>([]);
   const { user, isAdmin } = useAuth();
   const headingRef = useRef<HTMLImageElement>(null);
 
   // Check if they previously verified (passed the gate)
   useEffect(() => {
+    // Load vault index
+    fetch('/data/vault.json')
+      .then(res => res.json())
+      .then(data => setVaultItems(data))
+      .catch(err => console.error('Archives unreachable:', err));
+
     const verified = sessionStorage.getItem('vault_verified');
     if (verified === 'true') {
       setIsAuthorized(true);

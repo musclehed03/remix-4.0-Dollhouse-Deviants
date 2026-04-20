@@ -5,6 +5,8 @@ interface SafeImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   className?: string;
+  width?: string | number;
+  height?: string | number;
   description?: string;
   referrerPolicy?: React.HTMLAttributeReferrerPolicy;
   onError?: (e: any) => void;

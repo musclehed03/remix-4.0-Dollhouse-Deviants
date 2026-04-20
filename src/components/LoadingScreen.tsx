@@ -26,6 +26,8 @@ export default function LoadingScreen() {
             alt="Dollhouse Deviants" 
             width="600"
             height="150"
+            fetchPriority="high"
+            loading="eager"
             className="w-full h-auto opacity-70 contrast-150 drop-shadow-[0_0_50px_rgba(0,0,0,1)] animate-flicker relative z-10 transition-transform duration-700"
           />
 
@@ -57,7 +59,7 @@ export default function LoadingScreen() {
         {/* MASSIVE PROGRESS BAR */}
         <div className="h-3 w-full bg-zinc-950 overflow-hidden rounded-full border border-zinc-800 p-[2px]">
           <div 
-            className="h-full bg-[#FF1E89] transition-transform duration-200 shadow-[0_0_35px_#FF1E89] origin-left" 
+            className="h-full bg-[#FF1E89] transition-transform duration-200 shadow-[0_0_35px_#FF1E89] origin-left w-full" 
             style={{ transform: `scaleX(${progress / 100})` }} 
           />
         </div>

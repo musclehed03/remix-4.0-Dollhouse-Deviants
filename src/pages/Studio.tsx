@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
-import { Palette, Eye, Maximize2, Camera, Layers } from 'lucide-react';
+import Palette from 'lucide-react/dist/esm/icons/palette';
+import Eye from 'lucide-react/dist/esm/icons/eye';
+import Maximize2 from 'lucide-react/dist/esm/icons/maximize-2';
+import Camera from 'lucide-react/dist/esm/icons/camera';
+import Layers from 'lucide-react/dist/esm/icons/layers';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 

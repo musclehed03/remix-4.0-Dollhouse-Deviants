@@ -147,6 +147,19 @@ export default function UserProfile() {
               
               <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                 <div>
+                  <label htmlFor="user-website" className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#A3A3A3] mb-2">
+                    <ExternalLink size={14} /> Personal Website
+                  </label>
+                  <input 
+                    id="user-website"
+                    type="url" 
+                    className="url-input w-full bg-[#0a0a0a] border border-[#2D2D2D] px-3 py-2 text-white text-sm focus:border-[#FF69B4] focus:outline-none font-mono" 
+                    aria-label="Preview Website URL" 
+                    placeholder="https://..." 
+                  />
+                </div>
+
+                <div>
                   <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#A3A3A3] mb-2">
                     <Twitter size={14} /> Twitter / X
                   </label>

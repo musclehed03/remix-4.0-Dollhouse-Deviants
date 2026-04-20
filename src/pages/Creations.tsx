@@ -1,21 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { useAccess } from '../context/AccessibilityContext';
-import { Camera, Palette, ExternalLink, Info } from 'lucide-react';
+import Camera from 'lucide-react/dist/esm/icons/camera';
+import Palette from 'lucide-react/dist/esm/icons/palette';
+import ExternalLink from 'lucide-react/dist/esm/icons/external-link';
+import Info from 'lucide-react/dist/esm/icons/info';
 
-
-
-const artworks = [
-  { id: 1, title: 'Neon Deviance I', category: 'Photography', img: '/neon-cat-1.webp', alt: 'Sonja Kelley Neon Deviance I - A high contrast magenta and cyan noir-style portrait' },
-  { id: 2, title: 'Digital Sanctuary', category: 'Digital Art', img: '/neon-cat-2.webp', alt: 'Sonja Kelley Digital Sanctuary - An abstract digital landscape with industrial neon accents' },
-  { id: 3, title: 'Neon Deviance II', category: 'Photography', img: '/neon-cat-2.webp', alt: 'Sonja Kelley Neon Deviance II - A soft focus neon cat-themed composition in a digital sanctuary' },
-  { id: 4, title: 'Collective Spirit', category: 'Photography', img: '/Group_posing_with_202604082344.webp', alt: 'Sonja Kelley and the Dollhouse Deviants community in a noir-style industrial portrait' },
-];
+interface Artwork {
+  id: number;
+  title: string;
+  category: string;
+  img: string;
+  alt: string;
+}
 
 export default function Creations() {
   const { isSimplifiedMode } = useAccess();
+  const [artworks, setArtworks] = useState<Artwork[]>([]);
 
   useEffect(() => {
+    // Fetch artworks from external JSON to keep bundle light
+    fetch('/data/creations.json')
+      .then(res => res.json())
+      .then(data => setArtworks(data))
+      .catch(err => console.error('Archive retrieval failure:', err));
+
     const schema = {
       "@context": "https://schema.org",
       "@type": "ImageGallery",

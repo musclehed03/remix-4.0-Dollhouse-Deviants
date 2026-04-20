@@ -13,7 +13,7 @@ const SafetyResources = () => {
   return (
     <div className="mt-8 pt-8 border-t border-zinc-900 flex flex-wrap gap-6 text-xs uppercase tracking-widest text-zinc-400">
       {/* DISCRETE LINK */}
-      <a href="/safety" className="hover:text-[#FF69B4] hover:drop-shadow-[0_0_10px_rgba(255,105,180,0.5)] transition-all">
+      <a href="/safety" className="text-[#FF69B4] hover:text-white transition-all">
         Personal Safety & Site Security
       </a>
       
@@ -65,13 +65,13 @@ export default function Footer() {
         <div>
           <h3 className="text-white text-xs font-bold uppercase tracking-[0.3em] mb-6">Explore</h3>
           <ul className="text-xs space-y-4 uppercase tracking-widest">
-            <li><Link to="/our-story" className="hover:text-[#FF69B4] transition-colors">Our Story</Link></li>
-            <li><Link to="/studio" className="hover:text-[#FF69B4] transition-colors">The Studio</Link></li>
-            <li><Link to="/boutique" className="hover:text-[#FF69B4] transition-colors">The Boutique</Link></li>
-            <li><Link to="/circuit" className="hover:text-[#FF69B4] transition-colors">The Circuit</Link></li>
-            <li><Link to="/creations" className="hover:text-[#FF69B4] transition-colors">The Gallery</Link></li>
-            <li><Link to="/echoes" className="hover:text-[#FF69B4] transition-colors">The Echoes</Link></li>
-            <li><Link to="/vault" className="hover:text-[#FF69B4] transition-colors italic">The Vault (18+)</Link></li>
+            <li><Link to="/our-story" className="text-[#FF69B4] hover:text-white transition-colors">Our Story</Link></li>
+            <li><Link to="/studio" className="text-[#FF69B4] hover:text-white transition-colors">The Studio</Link></li>
+            <li><Link to="/boutique" className="text-[#FF69B4] hover:text-white transition-colors">The Boutique</Link></li>
+            <li><Link to="/circuit" className="text-[#FF69B4] hover:text-white transition-colors">The Circuit</Link></li>
+            <li><Link to="/creations" className="text-[#FF69B4] hover:text-white transition-colors">The Gallery</Link></li>
+            <li><Link to="/echoes" className="text-[#FF69B4] hover:text-white transition-colors">The Echoes</Link></li>
+            <li><Link to="/vault" className="text-[#FF69B4] hover:text-white transition-colors italic">The Vault (18+)</Link></li>
           </ul>
         </div>
 
@@ -106,9 +106,9 @@ export default function Footer() {
               </a>
             </li>
             <li><Link to="/safety" className="hover:text-[#FF69B4] transition-colors text-[#FF69B4]">Personal Safety & Site Security</Link></li>
-            <li><Link to="/compliance" className="hover:text-white transition-colors">2257 Compliance</Link></li>
-            <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy & Consent</Link></li>
-            <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+            <li><Link to="/compliance" className="text-[#FF69B4] hover:text-white transition-colors">2257 Compliance</Link></li>
+            <li><Link to="/privacy" className="text-[#FF69B4] hover:text-white transition-colors">Privacy & Consent</Link></li>
+            <li><Link to="/terms" className="text-[#FF69B4] hover:text-white transition-colors">Terms of Service</Link></li>
           </ul>
         </div>
       </div>

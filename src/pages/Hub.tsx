@@ -2,16 +2,14 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SafeImage from '../components/SafeImage';
 import { useAccess } from '../context/AccessibilityContext';
-import { 
-  Terminal, 
-  ShoppingBag, 
-  Radio, 
-  Sparkles, 
-  BookOpen, 
-  Lock, 
-  Anchor, 
-  ArrowRight 
-} from 'lucide-react';
+import Terminal from 'lucide-react/dist/esm/icons/terminal';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import Radio from 'lucide-react/dist/esm/icons/radio';
+import Sparkles from 'lucide-react/dist/esm/icons/sparkles';
+import BookOpen from 'lucide-react/dist/esm/icons/book-open';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import Anchor from 'lucide-react/dist/esm/icons/anchor';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import { Link } from 'react-router-dom';
 
 

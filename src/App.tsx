@@ -3,42 +3,44 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { AccessibilityProvider } from './context/AccessibilityContext';
+
+// CORE PAGES (Immediate)
 import Hub from './pages/Hub';
-import SplashScreen from './pages/SplashScreen';
-import SplashGate from './pages/SplashGate';
-import VaultGate from './pages/VaultGate';
-import AdminDashboard from './pages/AdminDashboard';
-import Vault from './pages/Vault';
-import Studio from './pages/Studio';
-import Boutique from './pages/Boutique';
-import Creations from './pages/Creations';
-import Circuit from './pages/Circuit';
-import Echoes from './pages/Echoes';
-import About from './pages/About';
-import OurStory from './pages/OurStory';
-import Support from './pages/Support';
-import Compliance from './pages/Compliance';
-import Privacy from './pages/Privacy';
-import Terms from './pages/Terms';
-import Safety from './pages/Safety';
-import UserProfile from './pages/UserProfile';
+
+// LAZY PAGES (Heavy or Secondary)
+const Vault = lazy(() => import('./pages/Vault'));
+const Studio = lazy(() => import('./pages/Studio'));
+const Boutique = lazy(() => import('./pages/Boutique'));
+const Creations = lazy(() => import('./pages/Creations'));
+const Circuit = lazy(() => import('./pages/Circuit'));
+const Echoes = lazy(() => import('./pages/Echoes'));
+const About = lazy(() => import('./pages/About'));
+const OurStory = lazy(() => import('./pages/OurStory'));
+const Support = lazy(() => import('./pages/Support'));
+const Compliance = lazy(() => import('./pages/Compliance'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Safety = lazy(() => import('./pages/Safety'));
+const UserProfile = lazy(() => import('./pages/UserProfile'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const SplashGate = lazy(() => import('./pages/SplashGate'));
+const VaultGate = lazy(() => import('./pages/VaultGate'));
 
 import { ProtectedRoute } from './components/ProtectedRoute';
 import TrevorBanner from './components/TrevorBanner';
 import AccessibilityMenu from './components/AccessibilityMenu';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingScreen from './components/LoadingScreen';
-import SensoryAdvisory from './components/SensoryAdvisory';
 
 export default function App() {
   const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
-    // Artificial delay to let the cinematic finish (2.5 seconds)
+    // Cinematic delay (2.5 seconds)
     const timer = setTimeout(() => setAppReady(true), 2500);
     return () => clearTimeout(timer);
   }, []);
@@ -52,32 +54,44 @@ export default function App() {
           <ScrollToTop />
           <TrevorBanner />
           <AccessibilityMenu />
-          <Routes>
-            <Route path="/" element={<Hub />} />
-            <Route path="/hub" element={<Hub />} />
-            <Route path="/gate" element={<SplashGate />} />
-            <Route path="/vault-gate" element={<VaultGate />} />
-            <Route path="/vault" element={<Vault />} />
-            <Route path="/studio" element={
-              <ProtectedRoute>
-                <Studio />
-              </ProtectedRoute>
-            } />
-            <Route path="/boutique" element={<Boutique />} />
-            <Route path="/creations" element={<Creations />} />
-            <Route path="/circuit" element={<Circuit />} />
-            <Route path="/echoes" element={<Echoes />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/our-story" element={<OurStory />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/compliance" element={<Compliance />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/safety" element={<Safety />} />
-            <Route path="/profile" element={<UserProfile />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
+          <Suspense fallback={<LoadingScreen />}>
+            <Routes>
+              <Route path="/" element={<Hub />} />
+              <Route path="/hub" element={<Hub />} />
+              <Route path="/gate" element={<SplashGate />} />
+              <Route path="/vault-gate" element={<VaultGate />} />
+              <Route path="/vault" element={
+                <Suspense fallback={<LoadingScreen />}>
+                  <Vault />
+                </Suspense>
+              } />
+              <Route path="/studio" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingScreen />}>
+                    <Studio />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/boutique" element={
+                <Suspense fallback={<LoadingScreen />}>
+                  <Boutique />
+                </Suspense>
+              } />
+              <Route path="/creations" element={<Creations />} />
+              <Route path="/circuit" element={<Circuit />} />
+              <Route path="/echoes" element={<Echoes />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/our-story" element={<OurStory />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/compliance" element={<Compliance />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/safety" element={<Safety />} />
+              <Route path="/profile" element={<UserProfile />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </Suspense>
         </Router>
       </AuthProvider>
     </AccessibilityProvider>

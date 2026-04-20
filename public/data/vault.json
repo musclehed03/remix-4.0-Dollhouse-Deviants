@@ -1,0 +1,30 @@
+[
+  { 
+    "id": 1, 
+    "title": "Deviant Digital Set 01", 
+    "price": "15.00", 
+    "desc": "Exclusive high-res gallery collection.",
+    "requiredRole": "deviant"
+  },
+  { 
+    "id": 2, 
+    "title": "Sonja (Founder)'s Private Log", 
+    "price": "0.00", 
+    "desc": "Behind the scenes of the sanctuary build.",
+    "requiredRole": "architect"
+  },
+  { 
+    "id": 3, 
+    "title": "Uncut Boutique Session", 
+    "price": "25.00", 
+    "desc": "Full-length 4K video archive.",
+    "requiredRole": "deviant"
+  },
+  { 
+    "id": 4, 
+    "title": "Midnight Preset Pack", 
+    "price": "12.00", 
+    "desc": "Custom lighting filters for deviants.",
+    "requiredRole": "deviant"
+  }
+]

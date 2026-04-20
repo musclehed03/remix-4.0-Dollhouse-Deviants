@@ -43,7 +43,26 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="/dd-sfw-logo-no-main.webp" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --dd-black: #050505;
+        --dd-gray: #121212;
+      }
+      body {
+        background-color: var(--dd-black);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      #root {
+        background-color: var(--dd-black);
+        background-image: radial-gradient(circle at center, var(--dd-gray) 0%, var(--dd-black) 100%);
+        min-height: 100vh;
+      }
+    </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PH7EKTY21Q"></script>

@@ -1,6 +1,11 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { ShieldCheck, Zap, Crown, Check, Lock, Terminal } from 'lucide-react';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import Zap from 'lucide-react/dist/esm/icons/zap';
+import Crown from 'lucide-react/dist/esm/icons/crown';
+import Check from 'lucide-react/dist/esm/icons/check';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import Terminal from 'lucide-react/dist/esm/icons/terminal';
 
 
 
