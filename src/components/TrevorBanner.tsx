@@ -15,11 +15,11 @@ export default function TrevorBanner() {
         <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-400 leading-tight">
           Support a project we believe in <span className="text-orange-500 font-bold">wholeheartedly</span>
         </p>
-        <p className="text-[10px] uppercase tracking-widest text-zinc-500 mt-0.5">Click to donate</p>
+        <p className="text-[10px] uppercase tracking-widest text-zinc-400 mt-0.5">Click to donate</p>
       </div>
       
       {/* Orange Badge with Text */}
-      <div className="h-10 flex items-center justify-center gap-2 bg-[#FF6B00] rounded-full px-5 shadow-[0_0_15px_rgba(255,107,0,0.4)]">
+      <div className="h-10 flex items-center justify-center gap-2 bg-[#E65100] rounded-full px-5 shadow-[0_0_15px_rgba(230,81,0,0.4)]">
         <Heart size={14} className="text-white fill-white animate-pulse" />
         <span className="text-white font-black text-xs tracking-widest whitespace-nowrap">THE TREVOR PROJECT</span>
       </div>

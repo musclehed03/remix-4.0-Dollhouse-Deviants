@@ -24,6 +24,8 @@ export default function LoadingScreen() {
           <img referrerPolicy="no-referrer" 
             src="/dd-sfw-logo-no-main.webp" 
             alt="Dollhouse Deviants" 
+            width="600"
+            height="150"
             className="w-full h-auto opacity-70 contrast-150 drop-shadow-[0_0_50px_rgba(0,0,0,1)] animate-flicker relative z-10 transition-transform duration-700"
           />
 
@@ -43,7 +45,7 @@ export default function LoadingScreen() {
               <ShieldAlert size={24} className="animate-pulse" />
               SYSTEM INITIALIZATION
             </div>
-            <div className="text-[12px] text-zinc-600 uppercase tracking-[0.6em] font-bold">
+            <div className="text-[12px] text-zinc-400 uppercase tracking-[0.6em] font-bold">
               Secure Uplink: Waverly_Node_01
             </div>
           </div>
@@ -55,8 +57,8 @@ export default function LoadingScreen() {
         {/* MASSIVE PROGRESS BAR */}
         <div className="h-3 w-full bg-zinc-950 overflow-hidden rounded-full border border-zinc-800 p-[2px]">
           <div 
-            className="h-full bg-[#FF1E89] transition-all duration-200 shadow-[0_0_35px_#FF1E89]" 
-            style={{ width: `${progress}%` }} 
+            className="h-full bg-[#FF1E89] transition-transform duration-200 shadow-[0_0_35px_#FF1E89] origin-left" 
+            style={{ transform: `scaleX(${progress / 100})` }} 
           />
         </div>
 

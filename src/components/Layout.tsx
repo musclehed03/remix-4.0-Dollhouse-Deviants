@@ -59,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               setShowSlowLoadTrigger(false);
               localStorage.setItem('dd_dismissed_slow_load', 'true');
             }}
-            className="absolute right-4 text-zinc-600 hover:text-white text-xs transition-colors"
+            className="absolute right-4 text-zinc-400 hover:text-white text-xs transition-colors"
             aria-label="Dismiss"
           >
             ✕
@@ -77,7 +77,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
              <img referrerPolicy="no-referrer" 
                src="/dd-sfw-logo-no-main.webp" 
                alt="Dollhouse Deviants Logo" 
-               className="h-10 w-auto rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
+               width="40"
+               height="40"
+               fetchPriority="high"
+               className="h-10 w-40 rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
              />
              <span className="uppercase font-light hidden md:inline-block">Dollhouse Deviants</span>
            </a>
@@ -165,7 +168,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                      System Status: Offline
                    </p>
                  </div>
-                 <div className="w-10 h-10 shrink-0 rounded-full border border-zinc-800 border-dashed flex items-center justify-center text-zinc-600 group-hover:border-[#FF69B4] group-hover:text-[#FF69B4] transition-all bg-zinc-900/50">
+                 <div className="w-10 h-10 shrink-0 rounded-full border border-zinc-800 border-dashed flex items-center justify-center text-zinc-400 group-hover:border-[#FF69B4] group-hover:text-[#FF69B4] transition-all bg-zinc-900/50">
                     <span className="text-xs tracking-widest font-black uppercase">?</span>
                  </div>
                 </button>

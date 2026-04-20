@@ -54,7 +54,7 @@ export default function Hub() {
                 Transitioning (MtF) was the moment I stopped building walls and started building doors. This space exists so you never have to curate a version of yourself that the world can digest.
               </p>
               <div className="mt-8 pt-6 border-t border-zinc-800/50 inline-block text-left">
-                <p className="text-zinc-600 font-mono text-xs uppercase tracking-widest mb-2">Signed,</p>
+                <p className="text-zinc-400 font-mono text-xs uppercase tracking-widest mb-2">Signed,</p>
                 <p className="signature-font text-4xl text-[#FF69B4] drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">
                   -Sonja Kelley
                 </p>
@@ -66,7 +66,7 @@ export default function Hub() {
         {/* Header moved just above branches - Changed to H2 to respect SR-Only H1 */}
         <header className="text-center mb-12">
           <h2 className="text-4xl font-black tracking-tighter uppercase text-white mb-2">The Hub</h2>
-          <p className="text-zinc-600 font-mono text-xs tracking-[0.5em] uppercase">Choose Your Branch</p>
+          <p className="text-zinc-400 font-mono text-xs tracking-[0.5em] uppercase">Choose Your Branch</p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
@@ -100,7 +100,7 @@ export default function Hub() {
               <div className="flex flex-col items-center text-center p-8 relative z-10">
                 <branch.icon size={42} className={`${branch.color} mb-6 transition-transform duration-500 group-hover:scale-110 drop-shadow-md`} />
                 <h2 className="text-xl font-black uppercase text-white tracking-tighter mb-1">{branch.name}</h2>
-                <p className="text-zinc-600 text-xs font-mono uppercase tracking-widest">{branch.desc}</p>
+                <p className="text-zinc-400 text-xs font-mono uppercase tracking-widest">{branch.desc}</p>
               </div>
             </Link>
           ))}
@@ -112,6 +112,8 @@ export default function Hub() {
             <SafeImage 
               src="/Group_posing_with_202604082344.webp" 
               alt="Sonja Kelley and the Dollhouse Deviants community in a noir-style industrial portrait" 
+              width="448"
+              height="192"
               className="w-full h-auto opacity-80" 
               loading="lazy"
             />

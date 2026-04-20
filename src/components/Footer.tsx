@@ -11,7 +11,7 @@ const SafetyResources = () => {
   };
 
   return (
-    <div className="mt-8 pt-8 border-t border-zinc-900 flex flex-wrap gap-6 text-xs uppercase tracking-widest text-zinc-600">
+    <div className="mt-8 pt-8 border-t border-zinc-900 flex flex-wrap gap-6 text-xs uppercase tracking-widest text-zinc-400">
       {/* DISCRETE LINK */}
       <a href="/safety" className="hover:text-[#FF69B4] hover:drop-shadow-[0_0_10px_rgba(255,105,180,0.5)] transition-all">
         Personal Safety & Site Security
@@ -43,7 +43,7 @@ export default function Footer() {
   const mediaKitUrl = "https://drive.google.com/uc?export=download&id=1a0cLF-MOWv43YIt_XFtTuaiNoZmaEceD";
 
   return (
-    <footer className="bg-black text-zinc-500 py-16 px-8 border-t border-zinc-900 mt-auto">
+    <footer className="bg-black text-zinc-400 py-16 px-8 border-t border-zinc-900 mt-auto">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         
         {/* Brand & Philanthropy */}
@@ -54,8 +54,8 @@ export default function Footer() {
             <span className="flex items-center gap-2">Built by <span className="signature-font text-[#FF69B4] text-2xl normal-case tracking-normal transform translate-y-1 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]">Sonja Kelley</span>.</span>
           </div>
           <div className="pt-4 border-t border-zinc-900 mt-6 inline-block">
-            <p className="text-[10px] uppercase tracking-widest text-zinc-600 mb-2">Proudly Supporting</p>
-            <a href="https://give.thetrevorproject.org/campaign/786401/donate" target="_blank" rel="noopener noreferrer" className="inline-block border border-transparent hover:border-[#FF5F1F] hover:shadow-[0_0_15px_rgba(255,95,31,0.6)] px-4 py-2 -ml-4 rounded-lg text-[#FF5F1F] text-xs font-black uppercase tracking-[0.2em] hover:text-white transition-all duration-300">
+            <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">Proudly Supporting</p>
+            <a href="https://give.thetrevorproject.org/campaign/786401/donate" target="_blank" rel="noopener noreferrer" className="inline-block border border-transparent hover:border-[#E65100] hover:shadow-[0_0_15px_rgba(230,81,0,0.6)] px-4 py-2 -ml-4 rounded-lg text-[#FF9030] text-xs font-black uppercase tracking-[0.2em] hover:text-white transition-all duration-300">
               THE TREVOR PROJECT →
             </a>
           </div>
@@ -105,7 +105,7 @@ export default function Footer() {
                 Download Media Kit
               </a>
             </li>
-            <li><Link to="/safety" className="hover:text-[#FF69B4] transition-colors text-[#FF69B4]/70">Personal Safety & Site Security</Link></li>
+            <li><Link to="/safety" className="hover:text-[#FF69B4] transition-colors text-[#FF69B4]">Personal Safety & Site Security</Link></li>
             <li><Link to="/compliance" className="hover:text-white transition-colors">2257 Compliance</Link></li>
             <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy & Consent</Link></li>
             <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
@@ -114,12 +114,12 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-center items-center gap-6 relative">
-        <p className="text-[10px] tracking-[0.5em] text-zinc-700 text-center">
+        <p className="text-[10px] tracking-[0.5em] text-zinc-400 text-center">
           ALL CONTENT © 2026 DOLLHOUSE DEVIANTS PRODUCTIONS • WAVERLY, IA
         </p>
         <button 
           onClick={user ? logout : loginWithGoogle} 
-          className="md:absolute md:right-0 text-xs text-zinc-600 uppercase border border-transparent px-4 py-2 rounded-lg hover:text-[#FF69B4] hover:border-[#FF69B4] hover:shadow-[0_0_15px_rgba(255,105,180,0.6)] transition-all duration-300 tracking-widest"
+          className="md:absolute md:right-0 text-xs text-zinc-400 uppercase border border-transparent px-4 py-2 rounded-lg hover:text-[#FF69B4] hover:border-[#FF69B4] hover:shadow-[0_0_15px_rgba(255,105,180,0.6)] transition-all duration-300 tracking-widest"
         >
           {user ? 'Sign Out' : 'Sonja (Founder) Login'}
         </button>
