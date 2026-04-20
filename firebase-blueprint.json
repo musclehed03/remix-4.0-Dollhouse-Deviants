@@ -1,0 +1,127 @@
+{
+  "entities": {
+    "LiveStatus": {
+      "title": "LiveStatus",
+      "description": "Indicates if the stream is live",
+      "type": "object",
+      "properties": {
+        "isLive": {
+          "type": "boolean"
+        }
+      },
+      "required": ["isLive"]
+    },
+    "ScheduleItem": {
+      "title": "ScheduleItem",
+      "description": "An item in the weekly schedule",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "day": { "type": "string" },
+        "activity": { "type": "string" },
+        "platform": { "type": "string" }
+      },
+      "required": ["id", "day", "activity", "platform"]
+    },
+    "Schedule": {
+      "title": "Schedule",
+      "description": "Weekly schedule",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": { "$ref": "ScheduleItem" }
+        }
+      },
+      "required": ["items"]
+    },
+    "ContentLinks": {
+      "title": "ContentLinks",
+      "description": "Links to external content hubs",
+      "type": "object",
+      "properties": {
+        "clips4SaleRss": { "type": "string" },
+        "pornhubNode": { "type": "string" },
+        "onlyFansUrl": { "type": "string" }
+      },
+      "required": ["clips4SaleRss", "pornhubNode"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile data including unlocked assets and social handles",
+      "type": "object",
+      "properties": {
+        "unlockedAssets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "socialHandles": {
+          "type": "object",
+          "properties": {
+            "twitter": { "type": "string" },
+            "instagram": { "type": "string" },
+            "reddit": { "type": "string" },
+            "bluesky": { "type": "string" },
+            "discord": { "type": "string" },
+            "snapchat": { "type": "string" },
+            "threads": { "type": "string" },
+            "tiktok": { "type": "string" },
+            "tumblr": { "type": "string" }
+          }
+        }
+      }
+    },
+    "BrandSocials": {
+      "title": "BrandSocials",
+      "description": "Brand social media links",
+      "type": "object",
+      "properties": {
+        "twitter": { "type": "string" },
+        "instagram": { "type": "string" },
+        "reddit": { "type": "string" },
+        "bluesky": { "type": "string" },
+        "discord": { "type": "string" },
+        "snapchat": { "type": "string" },
+        "threads": { "type": "string" },
+        "tiktok": { "type": "string" },
+        "tumblr": { "type": "string" }
+      }
+    },
+    "Webhooks": {
+      "title": "Webhooks",
+      "description": "Webhook URLs for notifications",
+      "type": "object",
+      "properties": {
+        "discordUrl": { "type": "string" },
+        "liveMessage": { "type": "string" }
+      },
+      "required": ["discordUrl", "liveMessage"]
+    }
+  },
+  "firestore": {
+    "/config/liveStatus": {
+      "schema": "LiveStatus",
+      "description": "Live status configuration"
+    },
+    "/config/schedule": {
+      "schema": "Schedule",
+      "description": "Weekly schedule configuration"
+    },
+    "/config/contentLinks": {
+      "schema": "ContentLinks",
+      "description": "Content links configuration"
+    },
+    "/config/webhooks": {
+      "schema": "Webhooks",
+      "description": "Webhook configurations"
+    },
+    "/config/brandSocials": {
+      "schema": "BrandSocials",
+      "description": "Brand social media links"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile data"
+    }
+  }
+}

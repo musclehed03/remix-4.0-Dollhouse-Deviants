@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper: Checks if the user has the 'architect' role in the users collection
+    function isArchitect() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'architect';
+    }
+
+    // 1. Users Collection
+    // Users can only read their own profile; nobody can write roles via the web app (manual only).
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false; 
+    }
+
+    // 2. Studio Items (Public Gallery)
+    // Anyone can see your art, but only you can upload/delete.
+    match /studioItems/{itemId} {
+      allow read: if true;
+      allow write: if isArchitect();
+    }
+
+    // 3. Vault Items (Private Gallery)
+    // Only logged-in members can see the entries; only you can upload/delete.
+    match /vaultItems/{itemId} {
+      allow read: if request.auth != null;
+      allow write: if isArchitect();
+    }
+    
+    // 4. Circuit Posts (Social Feed)
+    match /posts/{postId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null; // Members can post, but you might want to restrict this later
+    }
+  }
+}

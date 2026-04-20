@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Dancing+Script:wght@400..700&display=swap');
+@import "tailwindcss";
+
+@layer utilities {
+  .signature-font {
+    font-family: 'Dancing Script', cursive;
+  }
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-signature: "Dancing Script", cursive;
+  
+  --color-dd-neon: #FF1E89;
+  --color-dd-black: #050505;
+  --color-dd-gray: #121212;
+  --color-dd-surface: #1A1A1A;
+  --color-dd-charcoal: #1A1A1B;
+  --color-dd-hotpink: #FF69B4;
+  
+  /* Define magenta so Tailwind generates the classes used throughout the app */
+  --color-magenta-300: #FF9EE2;
+  --color-magenta-400: #FF69B4;
+  --color-magenta-500: #FF1E89;
+  --color-magenta-600: #D00060;
+  --color-magenta-900: #600020;
+
+  /* Brighten all zinc text colors globally for improved readable contrast site-wide */
+  --color-zinc-600: #a1a1aa; /* Map 600 to visually be 400 */
+  --color-zinc-500: #d4d4d8; /* Map 500 to visually be 300 */
+  --color-zinc-400: #e4e4e7; /* Map 400 to visually be 200 */
+  --color-zinc-300: #f4f4f5; /* Map 300 to visually be 100 */
+}
+
+:root {
+  --orange-neon: #FF5F1F;
+--scarlet-neon: #FF3131;
+  --dd-neon: #FF1E89;
+  --dd-black: #050505;
+  --dd-gray: #121212;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dd-black);
+  color: #E5E5E5;
+  background-image: radial-gradient(circle at center, #121212 0%, #050505 100%);
+  background-attachment: fixed;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 30, 137, 0.7), 0 0 20px rgba(255, 30, 137, 0.5);
+  will-change: filter;
+}
+
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 50;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.hub-link {
+  @apply block w-full py-4 px-6 bg-dd-surface border border-[#2D2D2D] text-white text-center font-bold uppercase tracking-widest hover:border-dd-neon hover:text-dd-neon transition-all duration-300;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* scan-slow animation globally available for Custom Avatars */
+@keyframes scan-slow {
+  0% { top: 0%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.animate-scan-slow {
+  position: absolute;
+  animation: scan-slow 10s infinite linear;
+}
+
+@keyframes mega-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.animate-mega-scan {
+  animation: mega-scan 3s infinite ease-in-out;
+}
+
+@keyframes sync-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.95); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+.animate-sync-pulse {
+  animation: sync-pulse 4s infinite ease-in-out;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-2px, 2px);
+  }
+  10% {
+    clip-path: inset(50% 0 10% 0);
+    transform: translate(2px, -2px);
+  }
+  20% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-2px, 0);
+  }
+  30% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, 2px);
+  }
+  40% {
+    clip-path: inset(30% 0 40% 0);
+    transform: translate(-2px, -2px);
+  }
+  50% {
+    clip-path: inset(60% 0 20% 0);
+    transform: translate(2px, 0);
+  }
+  60% {
+    clip-path: inset(5% 0 90% 0);
+    transform: translate(-2px, 2px);
+  }
+  70% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(2px, -2px);
+  }
+  80% {
+    clip-path: inset(90% 0 5% 0);
+    transform: translate(-2px, 0);
+  }
+  90% {
+    clip-path: inset(25% 0 50% 0);
+    transform: translate(2px, 2px);
+  }
+  100% {
+    clip-path: inset(15% 0 75% 0);
+    transform: translate(0, 0);
+  }
+}
+
+.glitch-effect {
+  position: relative;
+  z-index: 10;
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/branding/dd-sfw-logo.jpg?v=1');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glitch-effect::before {
+  left: 4px;
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+  mix-blend-mode: screen;
+  filter: hue-rotate(120deg) contrast(150%);
+}
+
+.glitch-effect::after {
+  left: -4px;
+  animation: glitch-anim-2 4s infinite linear alternate-reverse;
+  mix-blend-mode: screen;
+  filter: hue-rotate(-120deg) contrast(150%);
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-4px, 4px); filter: hue-rotate(90deg) contrast(150%) saturate(200%); opacity: 0; }
+  2% { clip-path: inset(50% 0 10% 0); transform: translate(4px, -4px); filter: hue-rotate(180deg) invert(1) contrast(200%); opacity: 1; text-shadow: 0 0 10px #FF1E89; }
+  4% { opacity: 0; }
+  20% { clip-path: inset(10% 0 60% 0); transform: translate(-4px, 0); filter: hue-rotate(45deg) saturate(300%); opacity: 0; }
+  22% { clip-path: inset(80% 0 5% 0); transform: translate(4px, 4px); filter: hue-rotate(-90deg) brightness(1.5); opacity: 0.8; }
+  24% { opacity: 0; }
+  40% { clip-path: inset(30% 0 40% 0); transform: translate(-6px, -6px); filter: hue-rotate(0deg) invert(0.8); opacity: 0; }
+  42% { clip-path: inset(60% 0 20% 0); transform: translate(6px, 0); filter: hue-rotate(270deg) contrast(300%); opacity: 1; }
+  44% { opacity: 0; }
+  60% { clip-path: inset(5% 0 90% 0); transform: translate(-4px, 4px); opacity: 0; }
+  62% { clip-path: inset(40% 0 30% 0); transform: translate(10px, -2px); filter: saturate(400%) hue-rotate(100deg); opacity: 0.9; }
+  64% { opacity: 0; }
+  80% { clip-path: inset(90% 0 5% 0); transform: translate(-8px, 0) scale(1.1); filter: invert(1); opacity: 0; }
+  82% { clip-path: inset(25% 0 50% 0); transform: translate(8px, 4px) scale(1.05); filter: contrast(400%) hue-rotate(-45deg); opacity: 1; }
+  84% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(15% 0 75% 0); transform: translate(0, 0); opacity: 0; }
+  5% { clip-path: inset(40% 0 20% 0); transform: translate(-10px, 5px); filter: hue-rotate(-90deg) saturate(300%) contrast(200%); opacity: 1; }
+  7% { opacity: 0; }
+  25% { clip-path: inset(80% 0 10% 0); transform: translate(6px, -6px) scale(1.1); opacity: 0; }
+  27% { clip-path: inset(10% 0 60% 0); transform: translate(-8px, 8px) scale(0.9); filter: hue-rotate(180deg) invert(0.5); opacity: 0.8; text-shadow: 0 0 15px #00E5FF; }
+  29% { opacity: 0; }
+  45% { clip-path: inset(60% 0 15% 0); transform: translate(8px, 0); filter: brightness(2) contrast(300%); opacity: 0; }
+  47% { clip-path: inset(20% 0 50% 0); transform: translate(-12px, -2px); filter: hue-rotate(270deg) invert(1); opacity: 1; }
+  49% { opacity: 0; }
+  65% { clip-path: inset(50% 0 30% 0); transform: translate(4px, -4px); opacity: 0; }
+  67% { clip-path: inset(5% 0 80% 0); transform: translate(-6px, 6px); border-radius: 10px; filter: hue-rotate(45deg) saturate(400%); opacity: 0.9; }
+  69% { opacity: 0; }
+  85% { clip-path: inset(30% 0 40% 0); transform: translate(0, 4px); filter: sepia(1) hue-rotate(180deg); opacity: 0; }
+  87% { clip-path: inset(70% 0 5% 0); transform: translate(15px, -10px) scale(1.15); filter: contrast(500%) saturate(500%); opacity: 1; }
+  89% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes master-glitch {
+  0%, 14.99%, 16%, 49.99%, 51%, 69.99%, 71%, 100% {
+    transform: translate(0, 0) skew(0deg) scale(1);
+    filter: none;
+  }
+  15%, 15.99% {
+    transform: translate(-10px, 5px) skew(5deg) scale(1.05);
+    filter: invert(0.2) hue-rotate(-20deg);
+  }
+  50%, 50.99% {
+    transform: translate(15px, -10px) skew(-10deg) scale(0.95);
+    filter: contrast(200%) saturate(300%) hue-rotate(90deg);
+  }
+  70%, 70.99% {
+    transform: translate(-5px, 15px) skew(2deg) scale(1.1);
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+.animate-master-glitch {
+  animation: master-glitch 5s infinite linear;
+}
+
+/* Flicker effect */
+@keyframes flicker {
+  0%, 19.99%, 22%, 62.99%, 64%, 64.99%, 70%, 100% {
+    opacity: 0.99;
+    filter: drop-shadow(0 0 50px rgba(0,0,0,1));
+    transform: translate(0, 0) scale(1);
+  }
+  20%, 21.99% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,1)) hue-rotate(-20deg) contrast(150%);
+    transform: translate(-3px, 2px) scale(1.02);
+  }
+  63%, 63.99% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,1)) hue-rotate(40deg) saturate(200%);
+    transform: translate(4px, -3px) scale(0.98);
+  }
+  65%, 69.99% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 20px #FF1E89) saturate(300%) contrast(150%);
+    transform: translate(-2px, -2px) skewX(2deg);
+  }
+}
+.animate-flicker {
+  animation: flicker 4s infinite linear;
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 30, 137, 0.4);
+    border-color: rgba(255, 30, 137, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 30, 137, 0.8);
+    border-color: rgba(255, 30, 137, 1);
+  }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 3s ease-in-out infinite;
+}
+
+/* Custom Glow Classes for Home Page */
+.glow-cyan { color: #00E5FF; text-shadow: 0 0 10px rgba(0,229,255,0.5); }
+.bg-cyan { background-color: #00E5FF; }
+.glow-green { color: #39FF14; text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+.bg-green { background-color: #39FF14; }
+.glow-orange { color: var(--orange-neon); text-shadow: 0 0 10px rgba(255,95,31,0.5); }
+.bg-orange { background-color: var(--orange-neon); }
+.glow-purple { color: #D946EF; text-shadow: 0 0 10px rgba(217,70,239,0.5); }
+.bg-purple { background-color: #D946EF; }
+.glow-scarlet { color: var(--scarlet-neon); text-shadow: 0 0 10px rgba(255,49,49,0.5); }
+.bg-scarlet { background-color: var(--scarlet-neon); }
+.glow-magenta { color: #FF69B4; text-shadow: 0 0 10px rgba(255,105,180,0.5); }
+.bg-magenta { background-color: #FF69B4; }
+
+/* CSS Global Overrides */
+
+/* Screen Reader Only - Hides content visually but keeps it for JAWS/NVDA */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Site-wide subtle magenta glow for zinc text to improve readability and aesthetic */
+.text-zinc-300, .text-zinc-400, .text-zinc-500, .text-zinc-600, .text-zinc-700 {
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.8), 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* 1. Reduce Motion: Sensory Safety for Neurodiversity */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+/* Stops The Studio grayscale-to-color transition */
+.reduce-motion .group:hover img {
+  filter: grayscale(100%) !important;
+  scale: 1 !important;
+}
+
+/* 2. Dyslexic/ADHD Font: Readable, Grounded Typography */
+.dyslexic-font {
+  font-family: 'Open Sans', sans-serif !important;
+  line-height: 2 !important; /* Doubles the line height for reading focus */
+  letter-spacing: 0.05em !important;
+}
+
+/* 3. Focus Mode: Dedicated Button/Sanctuary Mode */
+/* Hides everything except the core, primary content area */
+.focus-mode footer, 
+.focus-mode nav:not(.p-8), 
+.focus-mode .fixed:not(.bottom-8) { 
+  display: none !important; 
+}
+
+/* 4. High Contrast */
+.high-contrast {
+  background-color: black !important;
+  color: white !important;
+}
+/* Replaces magenta glows with high-visibility white outlines */
+.high-contrast .border,
+.high-contrast .text-magenta-500 {
+  border-color: white !important;
+  border-width: 2px !important;
+  color: white !important;
+  text-decoration: underline !important;
+}
+.high-contrast .bg-magenta-600 {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* 5. Color Blind Mode: High-visibility cyan shift and structural indicators */
+.color-blind-mode .text-magenta-500,
+.color-blind-mode .text-magenta-600,
+.color-blind-mode .text-magenta-400,
+.color-blind-mode .text-magenta-900 {
+  color: #00E5FF !important;
+  text-shadow: none !important;
+}
+.color-blind-mode .bg-magenta-500,
+.color-blind-mode .bg-magenta-600 {
+  background-color: #00E5FF !important;
+  color: black !important;
+}
+.color-blind-mode .border-magenta-500,
+.color-blind-mode .border-magenta-600,
+.color-blind-mode .border-magenta-900\/30,
+.color-blind-mode .border-magenta-900\/50 {
+  border-color: #00E5FF !important;
+}
+.color-blind-mode a {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+}
+
+/* 6. Light Mode */
+.light-mode {
+  background-color: #fafafa !important;
+  background-image: none !important;
+  color: #18181b !important;
+}
+.light-mode .bg-black,
+.light-mode .bg-\[\#0a0a0a\],
+.light-mode .bg-zinc-950 {
+  background-color: #ffffff !important;
+}
+.light-mode .bg-zinc-900,
+.light-mode .bg-zinc-900\/50,
+.light-mode .bg-zinc-900\/30,
+.light-mode .bg-\[\#1A1A1B\] {
+  background-color: #f4f4f5 !important;
+}
+.light-mode .bg-zinc-800 {
+  background-color: #e4e4e7 !important;
+}
+.light-mode .hover\:bg-zinc-700:hover {
+  background-color: #d4d4d8 !important;
+}
+.light-mode .text-white,
+.light-mode .hover\:text-white:hover,
+.light-mode .group:hover .group-hover\:text-white {
+  color: #09090b !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+.light-mode .border-white,
+.light-mode .hover\:border-white:hover,
+.light-mode .group:hover .group-hover\:border-white {
+  border-color: #09090b !important;
+}
+/* Preserve white text on colored buttons/elements */
+.light-mode .bg-magenta-600.text-white,
+.light-mode .bg-magenta-600 .text-white,
+.light-mode .bg-magenta-500.text-white,
+.light-mode .bg-magenta-500 .text-white,
+.light-mode .bg-white\/20.text-white,
+.light-mode .bg-magenta-600.hover\:text-white:hover,
+.light-mode .bg-magenta-500.hover\:text-white:hover,
+.light-mode .hover\:bg-magenta-600.hover\:text-white:hover,
+.light-mode .hover\:bg-magenta-500.hover\:text-white:hover,
+.light-mode .group:hover .group-hover\:bg-magenta-500.group-hover\:text-white,
+.light-mode .group:hover .group-hover\:bg-magenta-600.group-hover\:text-white {
+  color: #ffffff !important;
+}
+/* Add dark drop-shadow to neon icons in light mode so they don't wash out */
+.light-mode .text-\[\#39FF14\],
+.light-mode .group:hover .group-hover\:text-\[\#39FF14\] {
+  color: #22990c !important; /* Darker green */
+}
+.light-mode .text-\[\#00E5FF\],
+.light-mode .group:hover .group-hover\:text-\[\#00E5FF\] {
+  color: #008899 !important; /* Darker cyan */
+}
+.light-mode .text-\[\#B026FF\],
+.light-mode .text-\[\#D946EF\],
+.light-mode .group:hover .group-hover\:text-\[\#D946EF\] {
+  color: #8a19c9 !important; /* Darker purple */
+}
+.light-mode .text-\[\#FF69B4\],
+.light-mode .group:hover .group-hover\:text-\[\#FF69B4\] {
+  color: #D00060 !important; /* Darker pink */
+}
+.light-mode .text-\[\#FF5F1F\],
+.light-mode .group:hover .group-hover\:text-\[\#FF5F1F\] {
+  color: #c94000 !important; /* Darker orange */
+}
+.light-mode .text-\[\#FF3131\],
+.light-mode .group:hover .group-hover\:text-\[\#FF3131\] {
+  color: #c91010 !important; /* Darker scarlet */
+}
+.light-mode .hover\:border-\[\#39FF14\]:hover {
+  border-color: #22990c !important;
+}
+.light-mode .hover\:border-\[\#00E5FF\]:hover {
+  border-color: #008899 !important;
+}
+.light-mode .hover\:border-\[\#D946EF\]:hover,
+.light-mode .hover\:border-\[\#B026FF\]:hover {
+  border-color: #8a19c9 !important;
+}
+.light-mode .hover\:border-\[\#FF69B4\]:hover {
+  border-color: #D00060 !important;
+}
+.light-mode .hover\:border-\[\#FF5F1F\]:hover {
+  border-color: #c94000 !important;
+}
+.light-mode .hover\:border-\[\#FF3131\]:hover {
+  border-color: #c91010 !important;
+}
+.light-mode .bg-\[\#39FF14\] {
+  background-color: #22990c !important;
+}
+.light-mode .bg-\[\#00E5FF\] {
+  background-color: #008899 !important;
+}
+.light-mode .bg-\[\#D946EF\],
+.light-mode .bg-\[\#B026FF\] {
+  background-color: #8a19c9 !important;
+}
+.light-mode .bg-\[\#FF69B4\] {
+  background-color: #D00060 !important;
+}
+.light-mode .bg-\[\#FF5F1F\] {
+  background-color: #c94000 !important;
+}
+.light-mode .bg-\[\#FF3131\] {
+  background-color: #c91010 !important;
+}
+.light-mode .text-zinc-400,
+.light-mode .text-zinc-300,
+.light-mode .text-zinc-500,
+.light-mode .text-zinc-600,
+.light-mode .text-zinc-700,
+.light-mode .text-\[\#A3A3A3\] {
+  color: #52525b !important;
+  text-shadow: none !important;
+}
+.light-mode .border-zinc-900,
+.light-mode .border-zinc-800,
+.light-mode .border-zinc-700,
+.light-mode .border-zinc-600,
+.light-mode .border-\[\#2D2D2D\] {
+  border-color: #d4d4d8 !important;
+}
+.light-mode .bg-black\/50,
+.light-mode .bg-black\/80 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* --- LIGHT MODE REFINEMENTS (No Baby Pink, Better Contrast) --- */
+.light-mode .text-magenta-500,
+.light-mode .text-magenta-400,
+.light-mode .text-\[\#FF69B4\] {
+  color: #D00060 !important; /* Darker, richer magenta for legibility */
+}
+.light-mode .border-magenta-500,
+.light-mode .group:hover .group-hover\:border-magenta-500,
+.light-mode .hover\:border-\[\#FF69B4\]:hover {
+  border-color: #D00060 !important;
+}
+.light-mode .bg-magenta-500,
+.light-mode .bg-magenta-600,
+.light-mode .hover\:bg-magenta-500:hover,
+.light-mode .group:hover .group-hover\:bg-magenta-500,
+.light-mode .bg-\[\#FF69B4\] {
+  background-color: #D00060 !important;
+}
+/* Eliminate "Baby Girl Pink" from low-opacity backgrounds/borders */
+.light-mode .bg-magenta-500\/10,
+.light-mode .group:hover .group-hover\:bg-magenta-500\/10 {
+  background-color: rgba(0, 0, 0, 0.05) !important; /* Transparent light gray */
+}
+.light-mode .border-magenta-500\/30,
+.light-mode .border-magenta-500\/50 {
+  border-color: #D00060 !important; /* Dark magenta for visibility */
+}
+.light-mode .border-orange-500\/30 {
+  border-color: #FF6B00 !important; /* Solid orange for visibility */
+}
+
+/* =========================================
+   COMBINED ACCESSIBILITY MODES
+   ========================================= */
+
+/* 1. Light Mode + High Contrast */
+body.light-mode.high-contrast {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.light-mode.high-contrast * {
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+.light-mode.high-contrast .bg-zinc-800,
+.light-mode.high-contrast .bg-zinc-900,
+.light-mode.high-contrast .bg-zinc-950,
+.light-mode.high-contrast .bg-black,
+.light-mode.high-contrast .bg-\[\#1A1A1B\] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.light-mode.high-contrast .border,
+.light-mode.high-contrast .border-zinc-800,
+.light-mode.high-contrast .border-zinc-900 {
+  border-color: #000000 !important;
+  border-width: 2px !important;
+}
+.light-mode.high-contrast .text-magenta-500,
+.light-mode.high-contrast .text-magenta-400,
+.light-mode.high-contrast .text-zinc-400,
+.light-mode.high-contrast .text-zinc-500 {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+.light-mode.high-contrast .bg-magenta-600,
+.light-mode.high-contrast .bg-magenta-500 {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+.light-mode.high-contrast .border-magenta-500,
+.light-mode.high-contrast .border-magenta-600 {
+  border-color: #000000 !important;
+}
+
+/* 2. Light Mode + Color Blind */
+.light-mode.color-blind-mode .text-magenta-500,
+.light-mode.color-blind-mode .text-magenta-600,
+.light-mode.color-blind-mode .text-magenta-400 {
+  color: #0055FF !important; /* High contrast dark blue instead of cyan for light mode */
+}
+.light-mode.color-blind-mode .bg-magenta-500,
+.light-mode.color-blind-mode .bg-magenta-600 {
+  background-color: #0055FF !important;
+  color: #ffffff !important;
+}
+.light-mode.color-blind-mode .border-magenta-500,
+.light-mode.color-blind-mode .border-magenta-600 {
+  border-color: #0055FF !important;
+}
+
+/* 3. Dark Mode + High Contrast + Color Blind */
+.high-contrast.color-blind-mode .text-magenta-500,
+.high-contrast.color-blind-mode .text-magenta-600 {
+  color: #00E5FF !important;
+}
