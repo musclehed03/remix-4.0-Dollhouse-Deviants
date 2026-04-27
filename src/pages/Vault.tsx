@@ -93,6 +93,7 @@ export default function Vault() {
               alt="The Vault" 
               ref={headingRef}
               tabIndex={-1}
+              decoding="async"
               className="w-full h-auto object-contain outline-none"
             />
           </div>

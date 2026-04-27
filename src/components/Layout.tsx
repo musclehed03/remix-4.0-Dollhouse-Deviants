@@ -81,6 +81,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                height="40"
                fetchPriority="high"
                loading="eager"
+               decoding="async"
                className="h-10 w-auto rounded-sm object-contain shadow-[0_0_15px_rgba(255,105,180,0.15)]" 
              />
              <span className="uppercase font-light hidden md:inline-block">Dollhouse Deviants</span>
