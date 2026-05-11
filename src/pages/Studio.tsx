@@ -5,6 +5,7 @@ import Eye from 'lucide-react/dist/esm/icons/eye';
 import Maximize2 from 'lucide-react/dist/esm/icons/maximize-2';
 import Camera from 'lucide-react/dist/esm/icons/camera';
 import Layers from 'lucide-react/dist/esm/icons/layers';
+import PinkieAuditor from '../components/PinkieAuditor';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
@@ -70,6 +71,14 @@ export default function Studio() {
               ))}
             </div>
           </header>
+
+          {/* --- PINKIE AUDITOR SECTION --- */}
+          <div className="mb-20 max-w-2xl">
+            <PinkieAuditor />
+            <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 mt-4 px-2">
+              Note: Queries are logged and audited for sanctuary safety. Reasoning Engine // Project: dollhouse-deviants
+            </p>
+          </div>
 
           {/* --- THE MASONRY GRID --- */}
           <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
