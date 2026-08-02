@@ -45,30 +45,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setIsAgeVerified(true);
     }
 
-    if (!isFirebaseConfigured || !auth) {
-      const mockSession = localStorage.getItem('dd_mock_session');
-      if (mockSession === 'true') {
-        setUser({
-          uid: 'mock-admin-1',
-          email: ADMIN_EMAIL,
-          displayName: 'Sonja (Founder)',
-          role: 'architect',
-          emailVerified: true,
-          isAnonymous: false,
-          metadata: {},
-          providerData: [],
-          tenantId: null,
-          refreshToken: '',
-          delete: async () => {},
-          getIdToken: async () => '',
-          getIdTokenResult: async () => ({} as any),
-          reload: async () => {},
-          toJSON: () => ({})
-        } as AuthUser);
-      }
-      setLoading(false);
-      return;
-    }
+  if (!isFirebaseConfigured || !auth || !db) {
+  localStorage.removeItem('dd_mock_session');
+  setUser(null);
+  setLoading(false);
+  return;
+}
 
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
@@ -81,14 +63,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           const computedRole = currentUser.email === ADMIN_EMAIL 
             ? 'architect' 
             : (userSnap.exists() ? userSnap.data().role || 'deviant' : 'deviant');
-
-          setUser({
-            ...currentUser,
-            role: computedRole
-          } as AuthUser);
+setUser(
+  Object.assign(currentUser, {
+    role: computedRole,
+  }) as AuthUser,
+);
         } catch (error) {
           console.error("Failed to fetch user roles:", error);
-          setUser({ ...currentUser, role: currentUser.email === ADMIN_EMAIL ? 'architect' : 'deviant' } as AuthUser);
+         setUser(
+  Object.assign(currentUser, {
+    role:
+      currentUser.email === ADMIN_EMAIL
+        ? 'architect'
+        : 'deviant',
+  }) as AuthUser,
+);
         }
       } else {
         setUser(null);
@@ -105,12 +94,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const loginWithGoogle = async () => {
-    if (!isFirebaseConfigured || !auth) {
-      console.log("Firebase is not configured. Falling back to mock login.");
-      localStorage.setItem('dd_mock_session', 'true');
-      window.location.reload();
-      return;
-    }
+if (!isFirebaseConfigured || !auth) {
+  localStorage.removeItem('dd_mock_session');
+  alert(
+    'Authentication is temporarily unavailable. Please try again shortly.',
+  );
+  return;
+}
     try {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' }); 
@@ -128,18 +118,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const logout = async () => {
-    if (!isFirebaseConfigured || !auth) {
-      localStorage.removeItem('dd_mock_session');
-      window.location.reload();
-      return;
-    }
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error('Logout Protocol Failed:', error);
-    }
-  };
+  if (!isFirebaseConfigured || !auth) {
+    localStorage.removeItem('dd_mock_session');
+    setUser(null);
+    return;
+  }
 
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error('Logout Protocol Failed:', error);
+  }
+};
+if (!isFirebaseConfigured || !auth) {
+  localStorage.removeItem('dd_mock_session');
+  setUser(null);
+  return;
+}
   const isAdmin = user?.email === ADMIN_EMAIL;
 
   return (
