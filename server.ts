@@ -85,7 +85,7 @@ const auditLimiter = rateLimit({
 async function startServer() {
   const app = express();
   app.disable("x-powered-by");
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT ?? 8080);
 
   // JSON Body Parser for API routes
 app.use(express.json({ limit: "16kb" }));
