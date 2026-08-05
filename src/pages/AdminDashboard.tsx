@@ -793,7 +793,11 @@ function AssetDeploymentTab() {
 
     try {
       // 1. Upload to Firebase Storage
-      const storageRef = ref(storage, `gallery/${Date.now()}_${file.name}`);
+      const area = formData.target === 'Vault' ? 'vault' : 'studio';
+      const storageRef = ref(
+        storage,
+        `gallery/${area}/${Date.now()}_${file.name}`
+      );
       const snapshot = await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(snapshot.ref);
 
