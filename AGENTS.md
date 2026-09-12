@@ -4,10 +4,20 @@
 Applies to this entire repository unless a deeper `AGENTS.md` overrides it.
 
 ## Project
-React 19 + TypeScript + Vite app with Express/TypeScript server, Firebase/Firebase Admin, Google GenAI integrations, Tailwind CSS, Motion, and Cloud Run deployment.
+React 19 + TypeScript + Vite app with an Express/TypeScript server, Firebase/Firebase Admin, a Google Cloud Vertex AI reasoning-engine proxy for Pinkie, Tailwind CSS, Motion, and Cloud Run deployment.
 
 Primary domain: `dollhousedeviants.com`.
-Cloud Run work commonly targets `us-west1`.
+Cloud Run work commonly targets `us-west1`; Pinkie's current reasoning-engine endpoint is in `us-east1`.
+
+## Start every task with current truth
+Before changing code:
+1. Read this file and relevant repo docs.
+2. Inspect the current branch, status/diff, recent commits, open PRs, and open issues related to the task.
+3. Inspect the implementation itself; do not treat old chat summaries, old issue checklists, generated starter docs, or stale branch notes as authoritative.
+4. Prefer current code + current tests/CI + current focused issues/PRs as the source of truth.
+5. Do not duplicate work already present on another active branch/PR.
+
+If documentation conflicts with current verified implementation, fix the documentation in the same change when low-risk.
 
 ## Agent mode
 Use high autonomy. Inspect current code, implement the smallest correct change, run relevant checks, fix failures you caused, then present a verified result.
@@ -34,6 +44,7 @@ Code changes should normally pass `npm run lint` and `npm run build` before comp
 - Add focused regression coverage for bugs/security fixes when practical.
 - Read terminal/test output literally; separate root cause from warnings/noise.
 - Never discard unrelated user work.
+- Remove or replace stale generated/starter instructions when they contradict the current implementation.
 
 ## DevSecOps
 Security is part of the definition of done.
@@ -48,12 +59,14 @@ Security is part of the definition of done.
 - New dependencies require a clear need and supply-chain consideration.
 - Add security regression tests when practical.
 
-## Firebase / server
-- Keep privileged Firebase Admin operations server-side.
+## Firebase / server / Pinkie
+- Keep privileged Firebase Admin and Google Cloud operations server-side.
+- Pinkie currently authenticates to Google Cloud with Application Default Credentials; do not reintroduce a browser/client Gemini API key path without an explicit architecture decision.
 - Never trust client-supplied authorization or entitlement state.
 - Validate identity and authorization separately.
 - Do not expose stack traces, internal errors, secrets, or sensitive config to clients.
 - Preserve rate limiting and abuse controls on sensitive/public endpoints.
+- Keep Firebase client config separate from privileged server credentials; public Firebase web config is not authorization.
 
 ## Payments / entitlements
 - Payment and entitlement decisions must be server-verified.
